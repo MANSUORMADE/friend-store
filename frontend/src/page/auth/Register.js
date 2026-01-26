@@ -32,7 +32,6 @@ const isEmail = /^[a-zA-Z0-9]+@+gmail+.+com+$/.test(dataForm.email)
         setLoding(false)
         setTimeout(()=> { Navigate("/login") },3000)
       } catch (err) {
-        console.log(err)
         setLoding(false)
           if(err.message === "Network Error") return toast.error(err.message)
           toast.error(err.response.data)

@@ -12,10 +12,8 @@ const UserMony = () => {
       try {
         const res = await newRequest.get(`dealings/single/${dataUser.userid}`)
         setDataDealings(res.data)
-        console.log(res)
         setLoding(false)
       } catch(err) {
-        console.log(err)
        setLoding(false)
         if(err.message === "Network Error") return toast.error(err.message)
           toast.error(err.response.data)
@@ -23,7 +21,7 @@ const UserMony = () => {
     }
     useEffect(()=> {
       getData()
-    },[])
+    },[dataUser])
   return (
     <div className="dealings">
           {loding && <Animation />}

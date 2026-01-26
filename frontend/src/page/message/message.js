@@ -19,7 +19,6 @@ const Message = () => {
       const res = await newRequest.post(`message/post`,{first : router.id, last: dataUser.userid})
       setMessage(res.data)
     } catch(err) {
-      console.log(err)
     if(err.message === "Network Error") return toast.error(err.message)
       toast.error(err.response.data)
      }

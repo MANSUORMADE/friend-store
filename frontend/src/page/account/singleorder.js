@@ -17,7 +17,7 @@ const TheOrder = () => {
   const {order , status} = useSelector((state) => state.orders); 
 
   useEffect(()=> {
-    if(status == 'idle') {
+    if(status === 'idle') {
       dispatch(fatchOrders());
     }
   },[status, dispatch])
@@ -35,6 +35,7 @@ const TheOrder = () => {
     try {
       const res = await newRequest.put(`orders/${product.id}`,{...product, works: false, sortOrder: "تم الغاء"})
       toast.success("تم الغاء الطلب")
+      console.log(res.data)
       dispatch(fatchOrders());
       setTimeout(()=> {
         setLoding(false)
@@ -50,7 +51,7 @@ const TheOrder = () => {
       {loding && <Animation />}
       <ToastContainer />
   <h3>تفاصل الفاتورة </h3>
-  <div className='user-detals-order'>{console.log(product)}
+  <div className='user-detals-order'>
       <main><span>رقم الطلب</span><span>{product.idOrder}</span></main>   
       <main><span> تاريخ</span><span>{product.time.dateYMD+ product.time.dateAR}</span></main>   
       <main><span>الأسم</span><span>{product.account.username}</span></main>   

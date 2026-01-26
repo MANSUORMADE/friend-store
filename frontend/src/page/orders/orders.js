@@ -29,10 +29,8 @@ const Orders = () => {
     numBank: '',
     isbay: ''
   })
-
   const [openbay, setOpenBay] = useState('')
   const [thankorder, setThankorder] = useState('')
-
   const [discount, setDiscount] = useState({
     hove: false,
     code: '',
@@ -40,15 +38,9 @@ const Orders = () => {
   })
   useEffect(()=> {
   }, [dataUser]);
-
   if(!dataUser) return <div className='nofountf'><Link to="/login">تسجيل دخول</Link></div>
-
-
-
-  // the id order submint 
 const isForBay = getBay.sortBay === "دفع الأن" ?  getBay.numbay : getBay.sortBay
 const isFormValid = checkboxe  && isForBay
-// const SubmitOrdre = async (e)=> {}
 const SubmitOrdre = async (e)=> {
   e.preventDefault();
   setLoding(true)
@@ -59,7 +51,6 @@ const SubmitOrdre = async (e)=> {
           return setLoding(false)
         }
       }
-    // }
         const getTime = createTime(new Date().toISOString()) 
         let oop = { 
           isDiscount:discount,
@@ -73,7 +64,6 @@ const SubmitOrdre = async (e)=> {
 
           theBayMony: getBay.sortBay === 'دفع الأن' ? `دفع من ${getBay.sort}` : totalPrice(products) ,
         }
-        console.log(oop)
         try { 
           const res = await newRequest.post(`orders`, oop)
           localStorage.setItem("dataCart", null)
