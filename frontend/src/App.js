@@ -5,11 +5,11 @@ import {
   RouterProvider,
 } from "react-router-dom"
 // Outlet
-// import Navbar from './componat/Navbar/Navbar';
+import Navbar from './componat/Navbar/Navbar';
 // import Home from './page/Home/Home.js';
 import Footer from './componat/footer/Footer.js';
 // import Nows from './page/nows/nows.js';
-// import Aside from "./componat/aside/Aside.js"
+import Aside from "./componat/aside/Aside.js"
 // import AboutMessage from './page/message/aboutMessage.js';
 // import Messages from './page/message/message.js';
 
@@ -64,9 +64,9 @@ const App = () => {
 
     return(
       <div className="app">
-        {/* <Navbar />
+        <Navbar />
         <Aside />
-        <div className='content'>
+        {/* <div className='content'>
         <Outlet />
 
         </div> */}
