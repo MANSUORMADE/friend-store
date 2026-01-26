@@ -11,7 +11,6 @@ import ForumIcon from '@mui/icons-material/Forum';
 import AddNews from '../../componat/modle/addNews.js';
 import Addcaption from '../../componat/modle/addcaption.js';
 import Animation from '../../componat/animation/animation.js';
-import { Link } from 'react-router-dom';
 const Nows = () => {
   const dataUser = JSON.parse(localStorage.getItem("dataFriend"))
   const [pubishes, setPubishes]= useState([

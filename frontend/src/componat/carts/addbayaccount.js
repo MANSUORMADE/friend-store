@@ -25,7 +25,7 @@ const AddBayAccout = () => {
     const [inputCart, setInputCart] = useState({nameAccunt: "",  numberAccount:"", cats: ""})
   
   useEffect(()=> {
-    if(status == 'idle') {
+    if(status === 'idle') {
       dispatch(fetchProducts());
     }
   },[status, dispatch])

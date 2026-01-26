@@ -51,7 +51,7 @@ const Addcaption = ({colose,datac}) => {
         <div className='boxed'>  
           {datac.caption ? datac.caption.map((e,i)=> (
             <div key={i} className='box-caption'>
-            {e.img ? <img src={e.img || allimg.user} /> : <AccountCircleIcon/> }
+            {e.img ? <img src={e.img || allimg.user} alt="img" /> : <AccountCircleIcon/> }
               <div>
                 <span className='name'>{e.name}</span>
                 <span className='cap'>{e.iscaption}</span>

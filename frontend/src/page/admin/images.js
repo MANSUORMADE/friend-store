@@ -10,7 +10,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const Images = () => {
   const [loding, setLoding]= useState(false)
-  const [image, setImage]= useState([])
+  const [image, setImage]= useState('')
   const getDataimag = async ()=> {
     setLoding(true)
     try{
@@ -52,7 +52,7 @@ const Images = () => {
                     <div className='box' key={i} >
                       <div className='info'>
                         <div><DeleteForeverIcon onClick={()=>deletbay(e._id)} /></div>  
-                        <div><img src={e.url || allimg.angham} /></div>  
+                        <div><img src={e.url || allimg.angham} alt="img" /></div>  
                         <div>{e.createdAt}</div>  
                         <div>{e.public_id}</div>  
                       </div>

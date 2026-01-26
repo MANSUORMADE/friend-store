@@ -13,7 +13,7 @@ export const cartProduc = createSlice({
     reducers: {
         // Start to Product cart
         addToCart: (state, action) => {
-            const item = state.products.find(item=>item.title === action.payload.title && item.item == action.payload.item)
+            const item = state.products.find(item=>item.title === action.payload.title && item.item === action.payload.item)
             if(item) {
                 item.amount+=action.payload.amount
                 localStorage.setItem("dataCart", JSON.stringify(state.products) )

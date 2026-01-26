@@ -38,7 +38,7 @@ const AllUser = () => {
       } else if(alluser[i].name === serch) {
         setgetSerch(alluser[i])
           break
-      } else if(alluser[i].moble == serch) {
+      } else if(alluser[i].moble === serch) {
         setgetSerch(alluser[i])
         break
       } else {

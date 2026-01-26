@@ -11,7 +11,6 @@ const TheOrder = () => {
   
   const [loding, setLoding]= useState(false)
   const [idcart, setIdcart]= useState()
-  const [ordered, setOrder]= useState({})
   const [items, setItems]= useState([])
   const [singleorder, setSingleRder]= useState('')
   const [cart, setCart]= useState()
@@ -46,12 +45,10 @@ const TheOrder = () => {
         toast.error(err.response.data)      }
   }
   const addcartf = async ()=> {
-    const testNum = idcart
     if(!idcart) return console.log("get number good")  
     const order = singleorder
     const findcart = order.carts.find(i=>+i.id === +idcart)
       findcart.items = items
-      setOrder(order)
     }
     const additems = async ()=> {
       if(!idcart) return toast.error("أختار المنتج الأول")
@@ -70,7 +67,6 @@ const TheOrder = () => {
       try {
         const res = await newRequest.put(`orders/${singleorder._id}`,oop)
         toast.success(res.data)
-        setOrder('')
         setCart('')
         gedivataallUser()
         setLoding(false)

@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Carts.scss'
 import {  useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,7 +25,7 @@ const AddBayId = () => {
     const [inputCart, setInputCart] = useState({nameAccunt: "",  numberAccount:"", cats: "رصيد"})
   
   useEffect(()=> {
-    if(status == 'idle') {
+    if(status === 'idle') {
       dispatch(fetchProducts());
     }
   },[status, dispatch])

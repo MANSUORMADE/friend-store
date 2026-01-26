@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect,  useState } from 'react';
 import './message.scss'
-import { data, Link, useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import allimg from '../../assets/img.js';
 import newRequest from '../../utils/newRequest.js';
 import { toast, ToastContainer } from 'react-toastify';
@@ -26,7 +26,7 @@ const Message = () => {
   } 
   useEffect(()=> {
    getData()
-  }, [0]);
+  }, [dataUser]);
   // if(!dataUser) return <div className='nofountf'><Link to="/login">تسجيل دخول</Link></div>
   const handleSubmit = async (e) =>{
       e.preventDefault();
@@ -39,6 +39,7 @@ const Message = () => {
     }
     try {
       const res = await newRequest.put(`message/mess/${message._id}`, oop)
+      console.log(res.data)
       setType('')
       setLoding(false)
       getData()
@@ -71,20 +72,13 @@ const Message = () => {
             <div  className="messagee">
                 {message &&  message.mess.slice().reverse().map((e,i)=> (
                 <div key={i} className={`box ${e.id === dataUser.userid && "rew"} `}>
-                  {!dataUser.userid  &&  <img src={e.img || allimg.store} />} 
-                
+                  {!dataUser.userid  &&  <img src={e.img || allimg.store} alt="img" />} 
                 <div className='info'>
                     <div className='name'>{e.name}</div>
                     <div className='cap'>{e.mess}</div>
                 </div>
                 </div>
             ))}
-                <div className="box">                
-                  <div className='info'>
-                      <div className='name'>{"e.name"}</div>
-                      <div className='cap'>{"e.mess"}</div>
-                  </div>
-                </div>
             </div>
             <form onSubmit={handleSubmit} className="write">
                 <button disabled={!type} ><SendIcon/></button>

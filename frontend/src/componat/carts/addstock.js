@@ -23,7 +23,7 @@ const AddStock = () => {
     const [inputCart, setInputCart] = useState({nameAccunt: "",  numberAccount:"", cats: "رصيد"})
   
   useEffect(()=> {
-    if(status == 'idle') {
+    if(status === 'idle') {
       dispatch(fetchProducts());
     }
   },[status, dispatch])

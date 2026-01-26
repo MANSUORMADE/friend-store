@@ -5,7 +5,6 @@ import './auth.scss'
 import newRequest from '../../utils/newRequest.js'
 import Animation from '../../componat/animation/animation';
 import LoginW from '../../componat/login/login.js';
-import allimg from '../../assets/img.js';
 const Login = () => {
   const Navigate = useNavigate()
   const dataUser = JSON.parse(localStorage.getItem("dataFriend"))

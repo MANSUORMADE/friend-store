@@ -88,7 +88,7 @@ const TheUser = () => {
       <h1>تفاصل الحساب </h1>
       <div className='accuont-dataUser'>
         {colos && < UpDateUser colose={()=>colosed()} getdatauser={singleData._id}  />  }
-          <main><BorderColorIcon onClick={()=>setColos(!colos)}/><img  onClick={e=>e.target.classList.toggle("bik")} src={singleData.img || imgsuser} /></main>   
+          <main><BorderColorIcon onClick={()=>setColos(!colos)}/><img  onClick={e=>e.target.classList.toggle("bik")} src={singleData.img || imgsuser} alt="img" /></main>   
           <main><span>الأسم</span><span>{singleData.username}</span></main>   
           <main><span>نوع الحساب</span><span>{singleData.isSeller ? "عميل" : "مستخدم"}</span></main>   
           <main><span>الأيدي</span><span>{singleData.userid}</span></main>   

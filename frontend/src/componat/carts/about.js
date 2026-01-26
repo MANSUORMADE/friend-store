@@ -11,7 +11,7 @@ const AddAbout = () => {
   const {itmes, status} = useSelector((state) => state.itmes); 
   
   useEffect(()=> {
-    if(status == 'idle') {
+    if(status === 'idle') {
       dispatch(fetchProducts());
     }
   },[status, dispatch])

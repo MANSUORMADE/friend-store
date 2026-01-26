@@ -65,7 +65,7 @@ const AddNews = ({colose}) => {
                 <input id='placed' type='text' name="placed" placeholder=" تفاصيل لي المنشور" onChange={hanldeData} value={data.placed}  />
                 <label htmlFor='img'>صورة لي منشور</label>
                 <input id='img' type='file' name="img" onChange={e=>gitFileAmage(e.target.files[0])}   />
-                <img src={showimg} />
+                <img src={showimg} alt="img" />
                 <button disabled={!isFormValid} >أضافة أحداث</button>
             </form>
         </div>  

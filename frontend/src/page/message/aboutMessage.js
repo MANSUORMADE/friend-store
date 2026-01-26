@@ -3,7 +3,7 @@ import "./message.scss"
 import allimg from "../../assets/img"
 import { Link } from "react-router-dom"
 import newRequest from "../../utils/newRequest"
-import { toast, ToastContainer } from "react-toastify"
+import { toast } from "react-toastify"
 
 const AboutMessage = ()=> {
     const [dataTestAdmin, setDataTestAdmin] = useState('')

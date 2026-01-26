@@ -21,7 +21,6 @@ const Orders = () => {
   
   const [checkboxe, setCheckboxe]= useState(false)
   const [loding, setLoding]= useState(false)
-  const [closeBay, setCloseBay] = useState(true)
   const [getBay, setGetBay] = useState({
     sortBay: '',
     sort: '',
@@ -32,7 +31,6 @@ const Orders = () => {
   })
 
   const [openbay, setOpenBay] = useState('')
-  const [coushBay, setCoushBay] = useState('')
   const [thankorder, setThankorder] = useState('')
 
   const [discount, setDiscount] = useState({
@@ -41,7 +39,7 @@ const Orders = () => {
     rate: 0,
   })
   useEffect(()=> {
-  }, [!dataUser]);
+  }, [dataUser]);
 
   if(!dataUser) return <div className='nofountf'><Link to="/login">تسجيل دخول</Link></div>
 
@@ -156,7 +154,7 @@ const postCode = async ()=> {
                           {openbay && <ForBay getData={(e)=>getdataforbayFuctio(e)} closed={()=>closed()} />}
                           <AddCardIcon onClick={()=>setOpenBay(true)} />
                           <p>{getBay.sort ? (`طريقك الدفع هو ${getBay.sort}`)  : 'عليك اختياري طريق الدفع'}</p>
-                          <input type="text" required  onChange={e=>setGetBay({...getBay, numbay:e.target.value})}  placeholder={`رقم العملية  ${coushBay}`} />
+                          <input type="text" required  onChange={e=>setGetBay({...getBay, numbay:e.target.value})}  placeholder={`رقم العملية  `} />
                         </div>
                       </div>
                       }
