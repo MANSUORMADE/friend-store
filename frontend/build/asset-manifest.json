@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a2c6cfd3.css",
+    "main.js": "/static/js/main.ea1bbf21.js",
+    "static/media/news.png": "/static/media/news.229ae7adb4274179dca0.png",
+    "static/media/noimg.png": "/static/media/noimg.62505e3d05f015ca6656.png",
+    "static/media/clashofclans.png": "/static/media/clashofclans.63082e93e86ebafd17c1.png",
+    "static/media/ylalido.png": "/static/media/ylalido.94fdb3fb65a9de6c60bd.png",
+    "static/media/pobg.png": "/static/media/pobg.1dc8e74baaa41dd3170a.png",
+    "static/media/clashroyal.png": "/static/media/clashroyal.0bfcafff7df12918781e.png",
+    "static/media/user.png": "/static/media/user.d97ecc37c34d76f17c75.png",
+    "static/media/usdt.png": "/static/media/usdt.fb2effb34f00a0e532d1.png",
+    "static/media/zain.png": "/static/media/zain.abb8830d146925e8ca46.png",
+    "static/media/google.png": "/static/media/google.25716c5d4581c5212b3d.png",
+    "static/media/freefire.png": "/static/media/freefire.f43d4cbc99d3b51cddbf.png",
+    "index.html": "/index.html",
+    "main.a2c6cfd3.css.map": "/static/css/main.a2c6cfd3.css.map",
+    "main.ea1bbf21.js.map": "/static/js/main.ea1bbf21.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a2c6cfd3.css",
+    "static/js/main.ea1bbf21.js"
+  ]
+}

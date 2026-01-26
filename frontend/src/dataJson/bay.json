@@ -1,0 +1,8 @@
+[
+    {"img": "./images/bank/backend.png","name": "منصور اسحاق هارون منصور","numBank": 3178070, "mobale": "0927353157","sort": "بنكك"},
+    {"img": "./../images/bank/fory.png","name": "منصور اسحاق هارون منصور","numBank": 51717996, "mobale": "0927353157","sort": "فوري"},
+    {"img": "./../images/bank/mycashi.png","name": "منصور اسحاق هارون منصور","numBank": 400547942, "mobale": "0927353157","sort": "ماي كاش"},
+    {"img": "./../images/bank/binanse.png","name": "منصور اسحاق هارون منصور","numBank": 518937461, "mobale": "0927353157","sort": "بينانيس"},
+    {"img": "./../images/bank/cashi.png","name": "منصور اسحاق هارون منصور","numBank": "000000", "mobale": "0927353157","sort": "كاشي"},
+    {"img": "./../images/bank/trustwallet.png","name": "منصور اسحاق هارون منصور","numBank": "000000", "mobale": "0927353157","sort": "Trust Wallete"}
+]

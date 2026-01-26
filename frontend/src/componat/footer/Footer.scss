@@ -1,0 +1,19 @@
+footer {
+    width: 100%;
+    background-color: var(--main-color);
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+            margin: 5px;
+            color: #fff;
+            font-size: 15px;
+        }
+    }
+}
+@media (max-width: 780px) {
+    footer {
+        margin-bottom: 50px;
+    }
+}

@@ -1,0 +1,141 @@
+.backdrop {
+    position: fixed;
+    background-color:rgb(0 0 0 / 58%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    .outsunupmony {
+        .error {
+            color: red;
+        }
+        img {
+            width: 40px;
+            height: 50px;
+        }
+        .rew {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .colos {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+        width: 300px;
+        margin: 1% auto;
+        background: white;
+        color: black;
+        border-radius: 10px;
+        flex-direction: column;
+        padding: 20px;
+        position: relative;
+        overflow: auto;
+        .form {
+            // max-height: 15%;
+            margin-top: 5px;
+            width: 100%;
+            text-align: right;
+            input, label, textarea {
+                padding: 10px 0;
+                text-align: right;
+                margin: 2px;
+                font-size: 13px;
+                display: block;
+                width: 100%;
+            }
+            input {
+                
+                border: 1px solid rgb(204, 194, 194);
+            }
+            &.last {
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    span {
+                        padding: 5px;
+                    }
+                }
+            }
+            .addmoney {
+                display: flex;
+                gap: 10px;
+                padding: 10px 10px;
+                div{
+                    
+                }
+            }
+        }
+       .chann {
+            display: flex;
+            flex-direction: column-reverse;
+            margin: 10px 0;
+            gap: 10px;
+             h3 {
+                margin: 5px 0;
+                display: flex;
+                justify-content: space-around;
+                span {
+
+                }
+             }
+       }
+        button , .button {
+            margin: 5px auto;
+            width: 50%;
+            border: none;
+            text-align: center;
+            font-size: 13px;
+            color: white;
+            border-radius: 10px;
+            padding: 5px;
+            background-color: green;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            &:disabled {
+                opacity: 0.4;
+                cursor: no-drop;
+            }
+        }
+                .boxed {
+            overflow: auto;
+            max-height: 80vh;
+            padding: 10px;
+            .no {
+                text-align: center;
+                color: red;
+                height: 30vh;
+            }
+            .box-caption {
+                display: flex;
+                align-items: center;
+                margin: 5px;
+                img {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    margin: 5px;
+
+                }
+                div {
+                    background-color: #eee;
+                    color: #000000;
+                    padding: 5px;
+                    border-radius: 10px;
+                    display: grid;
+                    font-size: 10px;
+                    .name {
+                        font-weight: bold;
+                    }
+                    .cap {
+                        color: #4a4646;
+                    }
+                }
+
+            }
+        }
+    }
+}

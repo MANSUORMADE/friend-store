@@ -1,0 +1,112 @@
+.message {
+    .container {
+        // max-width: 600px;
+        position: relative;
+        // margin: 0px;
+        .breadcrumbs {
+            font: weight 300px;
+            font-size: 13px;
+            color: #fff;
+        }
+        height: 100vh;
+        .messagee {
+            padding: 5px;
+            height: 80%;
+            gap: 1px;
+            overflow: auto;
+            border: 1px solid #eeeeee8f;
+            overflow: auto;
+            background-color: #eeeeee74;
+            .box {
+                display: flex;
+                gap: 5px;
+                margin: 5px;
+                
+                .info{
+                    min-width: 150px;
+                    border-radius: 10px;
+                    background-color: #eee;
+                    padding: 5px;
+                    font-size: 13px;
+                                    
+                    
+                }
+                &.rew {
+                    // align-items: ;
+                    text-align: left;
+                    flex-direction: row-reverse;
+                    .info {
+                        background-color: rgba(8, 8, 255, 0.332);
+
+                    }
+                }
+            }
+        }
+        .write {
+            position: fixed;
+            background-color: #ffffff51;
+            width: 100%;
+            z-index: 2;
+            bottom: 100px;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            input {
+                flex: 1;
+                width: 80%;
+                height: 38px;
+                border: 1px solid lightgray;
+                padding: 0px;
+                border-radius: 10px;
+                padding-right: 10px;
+                width: 100%;
+            }
+            button {
+                background-color: #1dbf73;
+                color: white;
+                cursor: pointer;
+                width: 100px;
+                border-radius: 10px;
+                border: none;
+                &:disabled {
+                    opacity: 0.4;
+                    cursor: no-drop;
+                }
+            }
+        }
+    }
+}
+.about-message {
+    .container {
+        .row {
+            .box {
+                display: flex;
+                margin: 5px;
+                padding: 5px;
+                border-radius: 10px;
+                background-color: #eee;
+                gap: 10px;
+                img {
+                    width: 30px;
+                }
+                .info {
+                    flex: 1;
+                    justify-content: space-between;
+                    .left {}
+                    .right {
+                        .name {
+
+                        }
+                        .mess {
+                            color: #474141;
+                            font-size: 12px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

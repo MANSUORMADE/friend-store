@@ -1,0 +1,22 @@
+
+.login-woth {
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    background-color: #fff;
+    border: 1px solid #eee;
+    text-align: center;
+    align-items: center;
+    // display: flex;
+    cursor: pointer;
+    .gogle {
+        width: max-content;
+        display: flex;
+        margin: 0 auto;
+        gap: 10px;
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

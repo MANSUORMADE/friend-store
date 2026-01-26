@@ -1,0 +1,68 @@
+
+.auth {
+    .form {
+      background-color: #dbd9d9;
+      border-radius: 10px;
+
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: right;
+          .imguser {
+            display: flex;
+            justify-content: center;
+
+            img {
+
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+  
+            svg {
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+
+          input,label {
+            display: block;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            margin-bottom: 5px;
+          }
+          input {
+            padding: 10px 10px 10px 0;
+          }
+          .file-user {
+            display: none;
+          }
+          button {
+            width: 100%;
+            border: none;
+            color: white;
+            padding: 10px 0;
+            background-color: var(--color-mine);
+            border-radius: 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            &:disabled {
+              opacity: 0.4;
+              cursor: no-drop;
+          }
+          }
+        }
+        .forget {
+          padding: 10px;
+          a {
+            padding: 10px;
+            color: var(--color-mine);
+            }
+        }
+  }

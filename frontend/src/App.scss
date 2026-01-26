@@ -1,0 +1,133 @@
+ #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+:root {
+  --main-colorn: #fff;
+  --main-colord: #fff;
+  --main-colorc: #ffff;
+  --main-colorf: #78dcaa;
+  --main-color4: #78dcaa;
+  --main-colort: #fff;
+  --main-colorx: #000000;
+  --main-color: #266746;
+  --color-mine: #266746;
+  --main-colorb: #eee;
+}
+html,body, #root {
+  direction: rtl;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+.app {
+   font-family: Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+body {
+  direction: rtl;
+  background-color: var(--main-colord);
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+text-decoration: none;
+color: black;
+} 
+.login-err ,.nofountf, .loginc,.no-data {
+  background-color: var(--main-color);
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  width:max-content;
+    a {
+      color: white;
+    }
+}
+.backdrop {
+  position: fixed;
+  background-color:rgb(0 0 0 / 58%);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  .outsunupmony {
+      .error {
+          color: red;
+      }
+      img {
+          width: 40px;
+          height: 50px;
+      }
+      .rew {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+      }
+      .colos {
+          position: absolute;
+          top: 0;
+          right: 0;
+          cursor: pointer;
+      }
+      margin: 1% auto;
+      background: white;
+      color: black;
+      border-radius: 10px;
+      flex-direction: column;
+      padding: 20px;
+      position: relative;
+      overflow: auto;
+  }
+}
+.container { 
+    margin: 0px auto; 
+}
+@media (min-width: 500px) {
+  .container {
+    width: 400px;
+  }
+}
+@media (min-width: 600px) {
+  .container {
+    width: 500px;
+  }
+}
+@media (min-width: 700px) {
+  .container {
+    width: 600px;
+  }
+}
+@media (min-width: 772px) {
+  .container {
+    width: 650px;
+  }
+}
+@media (min-width: 902px) {
+  .container {
+    width: 800px;
+  }
+}
+@media (min-width: 1200) {
+  .container {
+    width: 1000px;
+  }
+}
