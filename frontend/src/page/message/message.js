@@ -25,8 +25,7 @@ const Message = () => {
   } 
   useEffect(()=> {
    getData()
-  }, [dataUser]);
-  // if(!dataUser) return <div className='nofountf'><Link to="/login">تسجيل دخول</Link></div>
+  },[dataUser]);
   const handleSubmit = async (e) =>{
       e.preventDefault();
       setLoding(true)
