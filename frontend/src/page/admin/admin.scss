@@ -533,5 +533,35 @@
             }
         }
         }
+        .accuont-user {
+            width: 300px;
+            margin: 0 auto;
+            color: rgba(0, 30, 43, 0.555);
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #eee ;
+            transition: 0.5s;
+            main {
+                // display: flex;
+                cursor: pointer;
+                justify-content: space-between;
+                font-weight: bold;
+                border: 1px solid #b3b1b175;
+                padding: 5px;
+                .is-up {
+                    display: flex;
+                    font-size: 12px;
+                    margin: 0;
+                    padding: 0;
+                    align-items: center;
+                    height: 10px;
+                    svg {
+                        width: 10px;
+                    }
+                }
+                .about {
+                }
+            }
+        }
     }
 }
