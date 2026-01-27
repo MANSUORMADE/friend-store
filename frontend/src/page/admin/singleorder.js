@@ -92,7 +92,7 @@ const TheOrder = () => {
       <ToastContainer />
       {loding && <Animation />}
   <h3>تفاصل الفاتورة </h3>
-  <div className='accuont-user'>
+  <div className='user-detals-order'>
       <main><span>رقم الطلب</span><span>{singleorder.idOrder}</span></main>   
       <main><span> تاريخ</span><span>{singleorder.time?.dateYMD+ singleorder.time?.dateAR}</span></main>   
       <main><span>الأسم</span><span>{singleorder.account.username}</span></main>   
