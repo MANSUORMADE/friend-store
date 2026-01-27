@@ -6,9 +6,9 @@ import {
 } from "react-router-dom"
 // Outlet
 import Navbar from './componat/Navbar/Navbar';
-// import Home from './page/Home/Home.js';
+import Home from './page/Home/Home.js';
 import Footer from './componat/footer/Footer.js';
-// import Nows from './page/nows/nows.js';
+import Nows from './page/nows/nows.js';
 import Aside from "./componat/aside/Aside.js"
 // import AboutMessage from './page/message/aboutMessage.js';
 // import Messages from './page/message/message.js';
@@ -42,7 +42,7 @@ import Aside from "./componat/aside/Aside.js"
 // import AddSelling from './componat/carts/addselling.js';
 // import AddBayId from './componat/carts/addbayid.js';
 // import AddBayAccout from './componat/carts/addbayaccount.js';
-// import Notfound from './componat/notfound/notfound.js';
+import Notfound from './componat/notfound/notfound.js';
 // // End cart 
 // // start admin 
 // import Admin from './page/admin/admin.js';
@@ -66,10 +66,10 @@ const App = () => {
       <div className="app">
         <Navbar />
         <Aside />
-        {/* <div className='content'>
+        <div className='content'>
         <Outlet />
 
-        </div> */}
+        </div>
         <Footer  />
       </div>
     )
@@ -80,72 +80,72 @@ const App = () => {
       path: "/",
       element: <Layout />,
       children: [
-      // {
-      //   path: "/",
-      //   element: <Home />
-      // },
-      // {
-      //   path: "/Orders",
-      //   element: <Orders />
-      // },
-      // {
-      //   path: "/login",
-      //   element: <Login />
-      // },
-      // {
-      //   path: "/register",
-      //   element: <Register />
-      // },
-      // {
-      //   path: "/reast",
-      //   element: <Reast />
-      // },
-      // {
-      //   path: "/reast-password/:token",
-      //   element: <ReastPassword />
-      // },
-      // {
-      //   path: "/nows",
-      //   element: <Nows />
-      // },
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/Orders",
+        element: <Orders />
+      },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/register",
+        element: <Register />
+      },
+      {
+        path: "/reast",
+        element: <Reast />
+      },
+      {
+        path: "/reast-password/:token",
+        element: <ReastPassword />
+      },
+      {
+        path: "/nows",
+        element: <Nows />
+      },
       // {
       //   path: "/message/:id",
       //   element: <Messages />
       // },
-      // {
-      //   path: "/:notFound",
-      //   element: <Notfound />
-      // },
-      // {
-      //   path: "/:notFound/:not",
-      //   element: <Notfound />
-      // },
-      // {
-      //   path: "/about",
-      //   element: <About />,
-      //   children: [
-      //     {
-      //       path: "messages",
-      //       element: <AboutMessage />
-      //     },
-      //     {
-      //       path: "",
-      //         element: <TheAbout />
-      //       },
-      //        {
-      //           path: ":notFound",
-      //           element: <Notfound />
-      //         },
-      //       {
-      //         path: "messages",
-      //         element: <Messages />
-      //       },
-      //       {
-      //         path: "do-to-get",
-      //         element: <Dotoget />
-      //       },
-      //     ]
-      // },
+      {
+        path: "/:notFound",
+        element: <Notfound />
+      },
+      {
+        path: "/:notFound/:not",
+        element: <Notfound />
+      },
+      {
+        path: "/about",
+        element: <About />,
+        children: [
+          {
+            path: "messages",
+            element: <AboutMessage />
+          },
+          {
+            path: "",
+              element: <TheAbout />
+            },
+             {
+                path: ":notFound",
+                element: <Notfound />
+              },
+            {
+              path: "messages",
+              element: <Messages />
+            },
+            {
+              path: "do-to-get",
+              element: <Dotoget />
+            },
+          ]
+      },
       // {
       //   path: "/account",
       //   element: <AboutAccount />,
