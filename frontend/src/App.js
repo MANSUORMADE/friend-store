@@ -3,20 +3,20 @@ import './App.scss'
 import {
   createBrowserRouter,
   RouterProvider,
+  Outlet
 } from "react-router-dom"
-// Outlet
 import Navbar from './componat/Navbar/Navbar';
 import Home from './page/Home/Home.js';
 import Footer from './componat/footer/Footer.js';
-// import Nows from './page/nows/nows.js';
+import Nows from './page/nows/nows.js';
 import Aside from "./componat/aside/Aside.js"
 // import AboutMessage from './page/message/aboutMessage.js';
 // import Messages from './page/message/message.js';
 
-// import Login from './page/auth/login.js';
-// import Register from './page/auth/Register.js';
-// import Reast from './page/auth/Reast.js';
-// import ReastPassword from './page/auth/reastpassword.js';
+import Login from './page/auth/login.js';
+import Register from './page/auth/Register.js';
+import Reast from './page/auth/Reast.js';
+import ReastPassword from './page/auth/reastpassword.js';
 // // start about to Store 
 // import About from './page/about/About';
 // import TheAbout from './componat/aboutStore/About.js';
@@ -88,26 +88,26 @@ const App = () => {
       //   path: "/Orders",
       //   element: <Orders />
       // },
-      // {
-      //   path: "/login",
-      //   element: <Login />
-      // },
-      // {
-      //   path: "/register",
-      //   element: <Register />
-      // },
-      // {
-      //   path: "/reast",
-      //   element: <Reast />
-      // },
-      // {
-      //   path: "/reast-password/:token",
-      //   element: <ReastPassword />
-      // },
-      // {
-      //   path: "/nows",
-      //   element: <Nows />
-      // },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/register",
+        element: <Register />
+      },
+      {
+        path: "/reast",
+        element: <Reast />
+      },
+      {
+        path: "/reast-password/:token",
+        element: <ReastPassword />
+      },
+      {
+        path: "/nows",
+        element: <Nows />
+      },
       // {
       //   path: "/message/:id",
       //   element: <Messages />
