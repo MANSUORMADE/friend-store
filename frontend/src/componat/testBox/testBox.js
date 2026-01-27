@@ -46,7 +46,7 @@ const TestBox = ()=> {
             <div className="info">
                 {data && data.map((e,i)=>(
                     <div key={i} className="box">
-                        <div className="img"><img src={e.img || allimg.noimg} /></div>
+                        <div className="img"><img src={e.img || allimg.noimg} alt="img" /></div>
                         <div>{e.title}</div>
                     </div>
                 ))}
