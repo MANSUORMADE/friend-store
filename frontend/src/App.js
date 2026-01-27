@@ -8,19 +8,19 @@ import {
 import Navbar from './componat/Navbar/Navbar';
 import Home from './page/Home/Home.js';
 import Footer from './componat/footer/Footer.js';
-import Nows from './page/nows/nows.js';
+// import Nows from './page/nows/nows.js';
 import Aside from "./componat/aside/Aside.js"
 // import AboutMessage from './page/message/aboutMessage.js';
 // import Messages from './page/message/message.js';
 
-import Login from './page/auth/login.js';
-import Register from './page/auth/Register.js';
-import Reast from './page/auth/Reast.js';
-import ReastPassword from './page/auth/reastpassword.js';
-// start about to Store 
-import About from './page/about/About';
-import TheAbout from './componat/aboutStore/About.js';
-import Dotoget from './componat/aboutStore/Dotoget.js';
+// import Login from './page/auth/login.js';
+// import Register from './page/auth/Register.js';
+// import Reast from './page/auth/Reast.js';
+// import ReastPassword from './page/auth/reastpassword.js';
+// // start about to Store 
+// import About from './page/about/About';
+// import TheAbout from './componat/aboutStore/About.js';
+// import Dotoget from './componat/aboutStore/Dotoget.js';
 // End about to Store 
 // // start Account User 
 // import AboutAccount from './page/account/aboutAccount.js';
@@ -88,26 +88,26 @@ const App = () => {
       //   path: "/Orders",
       //   element: <Orders />
       // },
-      {
-        path: "/login",
-        element: <Login />
-      },
-      {
-        path: "/register",
-        element: <Register />
-      },
-      {
-        path: "/reast",
-        element: <Reast />
-      },
-      {
-        path: "/reast-password/:token",
-        element: <ReastPassword />
-      },
-      {
-        path: "/nows",
-        element: <Nows />
-      },
+      // {
+      //   path: "/login",
+      //   element: <Login />
+      // },
+      // {
+      //   path: "/register",
+      //   element: <Register />
+      // },
+      // {
+      //   path: "/reast",
+      //   element: <Reast />
+      // },
+      // {
+      //   path: "/reast-password/:token",
+      //   element: <ReastPassword />
+      // },
+      // {
+      //   path: "/nows",
+      //   element: <Nows />
+      // },
       // {
       //   path: "/message/:id",
       //   element: <Messages />
@@ -120,32 +120,32 @@ const App = () => {
         path: "/:notFound/:not",
         element: <Notfound />
       },
-      {
-        path: "/about",
-        element: <About />,
-        children: [
-          {
-            path: "messages",
-            element: <AboutMessage />
-          },
-          {
-            path: "",
-              element: <TheAbout />
-            },
-             {
-                path: ":notFound",
-                element: <Notfound />
-              },
-            {
-              path: "messages",
-              element: <Messages />
-            },
-            {
-              path: "do-to-get",
-              element: <Dotoget />
-            },
-          ]
-      },
+      // {
+      //   path: "/about",
+      //   element: <About />,
+      //   children: [
+      //     {
+      //       path: "messages",
+      //       element: <AboutMessage />
+      //     },
+      //     {
+      //       path: "",
+      //         element: <TheAbout />
+      //       },
+      //        {
+      //           path: ":notFound",
+      //           element: <Notfound />
+      //         },
+      //       {
+      //         path: "messages",
+      //         element: <Messages />
+      //       },
+      //       {
+      //         path: "do-to-get",
+      //         element: <Dotoget />
+      //       },
+      //     ]
+      // },
       // {
       //   path: "/account",
       //   element: <AboutAccount />,
