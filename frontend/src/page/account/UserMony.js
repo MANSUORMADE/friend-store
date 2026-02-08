@@ -6,7 +6,7 @@ import newRequest from "../../utils/newRequest"
 const UserMony = () => {
     const dataUser = JSON.parse(localStorage.getItem("dataFriend"))
     const [loding, setLoding] = useState(false)
-    const [dataDealings, setDataDealings] = useState([])
+    const [dataDealings, setDataDealings] = useState('')
     const getData = async ()=> {
       setLoding(true)
       try {
@@ -21,7 +21,7 @@ const UserMony = () => {
     }
     useEffect(()=> {
       getData()
-    },[dataUser])
+    },[0])
   return (
     <div className="dealings">
           {loding && <Animation />}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fatchOrders } from '../../redux/ordersRedux';
 import Animation from '../../componat/animation/animation';
+import Suc from '../../componat/succas/suc.js';
 
 const UserOrder = () => {
   const dispatch = useDispatch()
@@ -22,10 +23,14 @@ const UserOrder = () => {
             <h2>كل طلبات {order.length}</h2>
               { order.slice().reverse().map((e,i)=>(
                     <div className='box' key={i} >
-                        <div>{e.sortOrder}</div>  
-                        <div>{e.createdAt}</div>  
+                      <div className='left'>
+                        <div>{`${e.time.dateYMD} : ${e.time.dateAR} : ${e.time.dateHMS}`}</div>  
                         <div>{Number(e.totalPriceOrder).toLocaleString()}س.ج : {e.carts.length}عنصر</div>
+                      </div>
+                      <div className='right'>
                         <div className='linked'><Link to={`/account/single-order/${e._id}`} >عرض</Link></div>
+                        <Suc data={e.sortOrder} />
+                      </div>
                     </div>
                 )) }
     </div>

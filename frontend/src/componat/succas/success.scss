@@ -1,0 +1,49 @@
+.suc {
+    // background-color: ;
+    // ::after {
+        //     content: "";
+        //     padding: 10px;
+            background-color: #13ff89;
+            // }
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        padding: 5px;
+        margin: 0 auto;
+    .message {
+        // }
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: #fff;
+    }
+}
+
+
+.success {
+    overflow: auto;
+    background-color: #78dcaa;
+    color: black;
+    border: 1px solid #aef2d0;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 10px;
+    
+    border-radius: 10px;
+    
+    h1 {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .info {
+        gap: 30px;
+        padding: 5px;
+        display: flex;
+        border: 1px solid #aef2d0;
+        justify-content: space-between;
+    }
+}

@@ -48,6 +48,38 @@ a {
 text-decoration: none;
 color: black;
 } 
+.true-false {
+  width: 30px;
+  height: 11px;
+  background-color: rgba(163, 163, 225, 0.421);
+  border-radius: 20px;
+  position: relative;
+  transition: 0.5s;
+  cursor: pointer;
+  &.true {
+      &::after {
+          position: absolute;
+          content: "";
+          width: 40%;
+          left: 0;
+          // padding: 10px;
+          border-radius: 50%;
+          height: 100%;
+          background-color: #1e00ff;
+      }
+  }
+  &.false {
+      &::before {
+          position: absolute;
+          content: "";
+          width: 40%;
+          right: 0;
+          border-radius: 50%;
+          height: 100%;
+          background-color: #2600ff41;
+      }
+  }
+}
 .login-err ,.nofountf, .loginc,.no-data {
   background-color: var(--main-color);
   margin: 20px auto;
@@ -88,14 +120,16 @@ color: black;
           right: 0;
           cursor: pointer;
       }
-      margin: 1% auto;
+      margin: 0 auto;
       background: white;
       color: black;
       border-radius: 10px;
       flex-direction: column;
-      padding: 20px;
+      padding: 10px;
       position: relative;
       overflow: auto;
+          width: max-content;
+
   }
 }
 .container { 

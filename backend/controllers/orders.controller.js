@@ -3,6 +3,7 @@ import { postSubscribers } from "./discount.controller.js"
 import Discount from '../models/discount.model.js'
 import User from "../models/user.model.js"
 import Porduct from "../models/product.model.js"
+import {sendWhatsApp} from "./../utils/sendWhatsApp.js"
 export const getsingleorder = async (req, res) =>{
     try {
         const order = await Order.findById(req.params.id)
@@ -32,7 +33,7 @@ export const getFilterOrder = async (req, res)=> {
 export const postOrder = async (req, res)=> {
   try {
         const data = req.body
-        if(!data) return next(createError(402, "البيانات الطلب فاضيه"))
+        if(!data) return res.status(402).json( "البيانات الطلب فاضيه")
          let discount = 0
          if(data.isDiscount.have) {
              const getDataDiscount = await Discount.findOne({code:data.isDiscount.code})
@@ -108,8 +109,12 @@ export const postOrder = async (req, res)=> {
         const idOrder = String(allorder.length + 1) + String(new Date().getFullYear())  + Math.ceil(Math.random() * 1000)
         const lastTotalPriceOrder = +data.totalPriceOrder - (+data.totalPriceOrder * +discount) / 100
         const newOrder = new Order({...data, idOrder, totalPriceOrder :  lastTotalPriceOrder,  discount: isDiscountb, codeDiscount:data.isDiscount.code})
+      const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${"data.account.phone"} السعر الاجمالي 
+      = ${data.totalPriceOrder} طريقة الدفع هو ${data.whoToPay} 
+      الزمن :  ${data.time.dateHMS}`
+        await sendWhatsApp('249909737254', code);
         await newOrder.save()
-        res.status(201).json("تم أضافة الطلب بجاح")
+        res.status(201).json({data: newOrder, message: "تم أضافة الطلب بجاح"})
     } catch (err) {
         res.status(499).json("error server")
 

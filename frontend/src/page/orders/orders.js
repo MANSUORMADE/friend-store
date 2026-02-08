@@ -1,4 +1,4 @@
-import React, { useEffect,  useState } from 'react';
+import  { useEffect,  useState } from 'react';
 import './Orders.scss'
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, Link, } from "react-router-dom"
@@ -11,6 +11,7 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import Animation from '../../componat/animation/animation';
 import newRequest from '../../utils/newRequest';
 import uploadUser from '../../utils/update.js';
+import Success from './../../componat/succas/success.js';
 import {createTime} from '../../utils/date.js';
 
 const Orders = () => {
@@ -20,6 +21,7 @@ const Orders = () => {
   const products = useSelector(state => state.cart.products)
   
   const [checkboxe, setCheckboxe]= useState(false)
+  const [message, setMessage]= useState('')
   const [loding, setLoding]= useState(false)
   const [getBay, setGetBay] = useState({
     sortBay: '',
@@ -37,6 +39,7 @@ const Orders = () => {
     rate: 0,
   })
   useEffect(()=> {
+    // setMessage('')
   }, [dataUser]);
   if(!dataUser) return <div className='nofountf'><Link to="/login">تسجيل دخول</Link></div>
 const isForBay = getBay.sortBay === "دفع الأن" ?  getBay.numbay : getBay.sortBay
@@ -55,7 +58,11 @@ const SubmitOrdre = async (e)=> {
         let oop = { 
           isDiscount:discount,
           time: getTime.createTime,
-          sortBayOrder: "في الأنتظار",
+          sortBayOrder: '',
+          sortOrder: {
+            message: "في الأنتظار",
+            color: "#ffa10f",
+          },
           account: userinfo,
           carts: products,
           totalPriceOrder: totalPrice(products),
@@ -67,12 +74,12 @@ const SubmitOrdre = async (e)=> {
         try { 
           const res = await newRequest.post(`orders`, oop)
           localStorage.setItem("dataCart", null)
-          toast.success(res.data)
+          toast.success(res.data.message)
           dispatch(resetCart())
           dispatch(fatchOrders());
-            setLoding(false)
-            uploadUser()
-            Navigate("/account/user-order")
+          setLoding(false)
+          setMessage(res.data.data)
+
         } catch(err) {
           setLoding(false)
           if(err.message === "Network Error") return toast.error(err.message)
@@ -105,10 +112,25 @@ const postCode = async ()=> {
         toast.error(err.response.data)
     }
 }
+const closeOrder =()=> {
+          setLoding(false)
+              setMessage('')
+            uploadUser()
+            Navigate("/account/user-order")
+}
   return (
     <div className="orders">
-       {loding && <Animation />}
+       {loding && <Animation />} {console.log(message)}
+       {message && (
+            <div className="backdrop">
+                <div className="outsunupmony">
+                <Success data={message} />
+                  <button onClick={closeOrder}>تاكيد</button>
+                </div>
+            </div>
+       )}
          <ToastContainer />
+         
         <div className="container">
             <form onSubmit={(e)=>SubmitOrdre(e)}>
                 <div className="top">

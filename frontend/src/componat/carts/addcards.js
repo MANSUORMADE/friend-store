@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import './Carts.scss'
 import { ToastContainer, toast } from 'react-toastify';
 
-import {  useParams } from 'react-router-dom'
+import {  useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/itmesRedux.js';
 import { addToCart } from '../../redux/cartProduc.js';
@@ -17,6 +17,7 @@ import Animation from '../animation/animation';
 
 
 const AddCards = () => {
+    const Navigate = useNavigate()
     const {title, item} = useParams()
   const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
@@ -36,7 +37,7 @@ const AddCards = () => {
   if(!produceed) return <>no itmes</>
   const cards = produceed.items.find(i=>i.titleProduce.replaceAll(" ", "_") === title)
   if(!cards) return <>no itmes</>
-    const pushData =  () =>{     
+    const pushData =  now =>{     
       setLoading(true) 
       let dataCart = {
         id: Date.now(),
@@ -56,6 +57,9 @@ const AddCards = () => {
         toast.success("تم أضافة المنتج في العربة")
         setTimeout(()=> { 
           setLoading(false)
+            if(now) {
+            Navigate("/Orders")
+          }
         },1000)
 
       }
@@ -83,10 +87,19 @@ const AddCards = () => {
                 </div>
             </div>
           }
-        <button 
-        className='add-cart-button' 
-        onClick={()=>pushData()} 
-        ><AddCircleIcon /> أضافة السلة</button>
+          <div className='tow'>
+              <button 
+        disabled={!ArrayCart} 
+              className='add-cart-button' 
+              onClick={()=>pushData()} 
+              ><AddCircleIcon /> أضافة السلة</button>
+              <button 
+              disabled={!ArrayCart} 
+              className='add-cart-button now' 
+              
+              onClick={()=>pushData("now")} 
+              ><AddCircleIcon />شراء الأن</button>
+          </div>
     </div>
 
   )

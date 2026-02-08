@@ -9,9 +9,9 @@ import messageRouter from "./routes/message.route.js"
 import authRouter from "./routes/auth.route.js"
 import imageRoutes from './routes/img.route.js';
 import producesRouter from "./routes/produces.route.js"
-import DiscountRouter from "./routes/discount.route.js"
+import DiscountRouter from "./routes/discount.route.js" 
 import DealingsRouter from "./routes/dealings.route.js"
-
+ 
 dotenv.config()
 const app = express()
 const API = process.env.APISERVER || 1011

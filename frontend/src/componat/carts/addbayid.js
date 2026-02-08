@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import './Carts.scss'
-import {  useParams } from 'react-router-dom'
+import {  useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/itmesRedux.js';
@@ -15,6 +15,7 @@ import Animation from '../animation/animation';
 
 
 const AddBayId = () => {
+    const Navigate = useNavigate()
   const {title, item} = useParams()
   const dispatch = useDispatch()
     const [ArrayCart, setArrayCart] = useState('')
@@ -39,7 +40,7 @@ const AddBayId = () => {
     if(!produce) return <div>the produce and default</div>
   
   const handleChangeAccount = (e) =>  setInputCart((prev)=>{  return {...prev, [e.target.name]: e.target.value}})
-  const pushData =  () =>{     
+  const pushData =  now =>{     
     setLoading(true) 
     let dataCart = {
         id: Date.now(),
@@ -61,6 +62,9 @@ const AddBayId = () => {
         toast.success("تم أضافة المنتج في العربة")
         setTimeout(()=> { 
           setLoading(false)
+            if(now) {
+            Navigate("/Orders")
+          }
         },1000)
 
       }
@@ -92,11 +96,19 @@ const AddBayId = () => {
                 <input type="text" required onChange={handleChangeAccount} value={inputCart.numberAccount} name="numberAccount" placeholder="الأيدي او رقم التسلسول" />
                 <input type="text" required onChange={handleChangeAccount} value={inputCart.nameAccunt} name="nameAccunt"placeholder="الاسم "  />
               </div>
-        <button 
+            <div className='tow'>
+              <button 
         disabled={!ArrayCart || !inputCart.numberAccount} 
-        className='add-cart-button' 
-        onClick={()=>pushData()} 
-        ><AddCircleIcon /> أضافة السلة</button>
+              className='add-cart-button' 
+              onClick={()=>pushData()} 
+              ><AddCircleIcon /> أضافة السلة</button>
+              <button 
+        disabled={!ArrayCart || !inputCart.numberAccount} 
+              className='add-cart-button now' 
+              
+              onClick={()=>pushData("now")} 
+              ><AddCircleIcon />شراء الأن</button>
+          </div>
     </div>
 
   )

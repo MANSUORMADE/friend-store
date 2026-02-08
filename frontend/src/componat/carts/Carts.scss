@@ -94,30 +94,40 @@
         align-items: center;
         input ,select, label {
             padding: 5px;
-            margin: 1px;
-            width: 54%;
+            margin: 2px;
+            width: 100%;
             border-radius: 3px;
             outline: none;
-            border: none;
+            border: 1px solid #00ff1f70;
             font-weight: bold;
-            font-size: 10px;
+            font-size: 25px;
         }
     }
-    .account-chos {}
-    .add-cart-button {
-        background-color:rgb(0 128 0);
-        margin-top: 10px;
-        color: white;
-        font-weight: bold;
-        font-size: 15px;
-        border: none;
-        padding: 5px;
-        border-radius: 35px;
-        width: 100%;
-        cursor: pointer;
-        &:disabled {
-            opacity: 0.4;
-            cursor: no-drop;
+    .tow {
+        display: flex;
+        gap: 10px;
+        .add-cart-button {
+            background-color:#008000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            &.now {
+                background-color:rgb(0, 34, 255);
+            }
+            margin-top: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            border: none;
+            padding: 5px;
+            border-radius: 35px;
+            width: 100%;
+            cursor: pointer;
+            &:disabled {
+                opacity: 0.4;
+                cursor: no-drop;
+            }
         }
     }
 }

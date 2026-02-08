@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './admin.scss';
 import newRequest from '../../utils/newRequest';
 import { useEffect, useState } from 'react';
+import Success from '../../componat/succas/success.js';
 import Animation from '../../componat/animation/animation';
 import noimg from './../../images/noimg.png'
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,6 +14,7 @@ const TheOrder = () => {
   const [idcart, setIdcart]= useState()
   const [items, setItems]= useState([])
   const [singleorder, setSingleRder]= useState('')
+  const [success, setSuccess]= useState({color: '', message: ''})
   const [cart, setCart]= useState()
   const gedivataallUser = async ()=> {
     setLoding(true)
@@ -55,13 +57,17 @@ const TheOrder = () => {
       setCart(items.push(cart))
       setCart('')
     }
-    
+    const handleChange = (e) =>  setSuccess(prev=> {  return {...prev, [e.target.name]: e.target.value} })
+
     const addcartserver = async ()=> {
       setLoding(true)
       const oop ={
         ...singleorder, works: true, 
         annul: false, 
-        sortOrder: "مكتمل"
+        sortOrder: {
+          color: success.color,
+          message: success.message,
+        }
 
       }
       try {
@@ -92,26 +98,14 @@ const TheOrder = () => {
       <ToastContainer />
       {loding && <Animation />}
   <h3>تفاصل الفاتورة </h3>
-  <div className='user-detals-order'>
-      <main><span>رقم الطلب</span><span>{singleorder.idOrder}</span></main>   
-      <main><span> تاريخ</span><span>{singleorder.time?.dateYMD+ singleorder.time?.dateAR}</span></main>   
-      <main><span>الأسم</span><span>{singleorder.account.username}</span></main>   
-      <main><span>بريد الإلكتروني</span><span>{singleorder.account.email}</span></main>   
-      <main><span>رقم الهاتف</span><span>{singleorder.account.phone || "فارغ"}</span></main>     
-      <main><span>تعليغ</span><span>{singleorder.account.thankorder || "فارغ"}</span></main>
-      <main><span>طريق الدفع </span><span>{singleorder.whoToPay || null}</span></main>   
-      <main><span>مبلق المدفع</span><span>{singleorder.theBayMony || null}</span></main>   
-      <main><span>رقم العملية </span><span>{singleorder.numberbay || "لا يوجد"}</span></main> 
-      <main><span>قسيمة</span><span>{singleorder.discount && singleorder.codeDiscount || "لا يوجد"}</span></main> 
-      <main><span>حالة الطلب</span><span>{!singleorder.works ? "تم الغاء": singleorder.sortOrder}</span></main> 
-  </div>
-    <h3>تفاصل الطلب </h3>
+    <Success data={singleorder} />
     <h3>تفاصل الطلب </h3>
 
             {singleorder.carts.map((e,i)=>(
                 <div key={i} className='box'>
                   <div className='img' ><img src={e.img || noimg} /></div>
                   <div className='box-info'>
+                            <div className='f'>{e.id}</div>
                       <div className='cart'>
                         <div className='f-c'>
                             <div className='f'>{e.sort}</div>
@@ -164,6 +158,8 @@ const TheOrder = () => {
               <div>{items}</div>
             <div className='butt'>
                 <button onClick={()=>addcartf()}>أضافة للطلب</button>
+                <input type='color' value={success.color} name="color" onChange={handleChange} />
+                <input type='text' value={success.message} name="message" onChange={handleChange} />
                 <button onClick={()=>addcartserver()}>أضافة للطلب في السيرفر</button>
                 <button onClick={()=>deletOrder(singleorder._id)}>حذف الطلب من السيرفر</button>
             </div>

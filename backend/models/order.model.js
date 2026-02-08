@@ -20,8 +20,8 @@ const OrderSchema = new Schema({
     default: true,
  },
  sortOrder: {
-    type: String,
-    default: "في الأنتظار",
+    type: Object,
+    default: false,
  },
  theBayMony: {
     type: String,

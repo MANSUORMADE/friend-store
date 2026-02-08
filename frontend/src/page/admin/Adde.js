@@ -14,12 +14,14 @@ const Add = () => {
 
   const [showProduct, setShowProduct] = useState([]);
   const [loding, setLoding]= useState(false)
+  const [updataImte, setUpdataImte]= useState(false)
   const [getFile, setGetFile] = useState('')
   const imgbay = useRef()
   const [paragraphs, setParagraphs] = useState('');
+
   const [product, setProduct] = useState({title: "", img: "", paragraphs: [], items: []});
   const [items, setItems] = useState({titleProduce: '', sort: "", cart: [], });
-  const [cart, setCart] = useState({font: false, item: "", price: ''});
+  const [cart, setCart] = useState('');
   const handlCart = (e)=> setCart(prev =>{ return {...prev, [e.target.name]: e.target.value}})
 
     const getDataProduct = async ()=> {
@@ -40,14 +42,13 @@ const Add = () => {
       reader.onload = (e) =>   setProduct({...product, img :e.target.result})
       reader.readAsDataURL(e)
     }
-    
     useEffect(()=>{
       getDataProduct()
   },[])
   
   const addCart = () => {
     items.cart.push(cart)
-    setCart({font: false, item: "", price: ''})
+    setCart("")
   }
   const addItems = () => {
 if(!items.sort) return toast.error("أختار طريق الشحن")
@@ -124,12 +125,16 @@ const deleteItems = se=> {
   const filet = product.items.filter(e=>e.titleProduce !== se)
  setProduct({...product, items: filet})
 }
-
+const updateItme = ()=> {
+  const find = items.cart.find(i=>i._id === cart?._id)
+  find.item = cart.item
+  find.price = cart.price
+  setItems({...items})
+}
 
 return (
 <div className='add'>
-         <h1>Add New Gig</h1>
-         <ToastContainer />
+        <ToastContainer />
       {loding && <Animation />}
       <div className="sections">
         <div className='form'>
@@ -147,21 +152,26 @@ return (
               </select>
               <label htmlFor="test">منتجات</label>  
               <div className='cart'>
-                <input type="text" name='item' onChange={handlCart} value={cart.item} placeholder="منتج" />
-                <input type="text" name='price' onChange={handlCart} value={cart.price} placeholder="سعر المنتج" />
-                <button onClick={()=>addCart()}>أضافة</button>
+                <input type="text" name='item' onChange={handlCart} value={cart?.item} placeholder="منتج" />
+                <input type="text" name='price' onChange={handlCart} value={cart?.price} placeholder="سعر المنتج" />
+              {cart ? (
+                <button onClick={()=>updateItme()}>تحديث</button>
+                ):(
+                  <button onClick={()=>addCart()}>أضافة</button>
+              )}
               </div>
               <ul>
                 {items.cart.map((e,i)=>(
-                  <li key={i}>
-                    <span>{e.item}</span>
+                  <li key={i}> 
+                    {/* <span onClick={()=>console.log(e)}>{e.item}</span> */}
+                    <span onClick={()=>setCart(e)}>{e.item}</span>
                     <span>{e.price}</span>
                     <span onClick={()=>changeCart(e)}>{e.font ? "true": "false"}</span>
                     <span onClick={()=>deleteCart(e.item)}>X</span>
                   </li>
                 ))}
+                <button onClick={()=>addItems()}>أضافة</button>
               </ul>
-            <button onClick={()=>addItems()}>أضافة</button>
             </div>
             <div className="left">
               <div className='addImg'>

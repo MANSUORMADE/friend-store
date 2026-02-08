@@ -2,7 +2,7 @@
 import { useEffect,  useState } from 'react'
 import './Carts.scss'
 import { ToastContainer, toast } from 'react-toastify';
-import {  useParams } from 'react-router-dom'
+import {  useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../redux/itmesRedux.js';
 import { addToCart } from '../../redux/cartProduc.js';
@@ -13,6 +13,8 @@ import Animation from '../animation/animation';
 
 
 const AddStock = () => {
+    const Navigate = useNavigate()
+
   const {title, item} = useParams()
   const dispatch = useDispatch()
       const [amount, setAmount] = useState(1)
@@ -41,7 +43,7 @@ const AddStock = () => {
   const isNameAccunt = inputCart.nameAccunt
   const isFormValid = isNameAccunt && isNumberAccount  && +amount > 0 
 
-  const pushData =  () =>{    
+  const pushData =  now =>{    
     setLoading(true)  
     let dataCart = {
         id: Date.now(),
@@ -59,6 +61,9 @@ const AddStock = () => {
         toast.success("تم أضافة المنتج في العربة")
         setTimeout(()=> { 
           setLoading(false)
+            if(now) {
+            Navigate("/Orders")
+          }
         },1000)
       }
   return (
@@ -88,11 +93,19 @@ const AddStock = () => {
             <input type="text" required onChange={handleChangeAccount} value={inputCart.numberAccount} name="numberAccount" placeholder="رقم او البريد" />
             <input type="text" required onChange={handleChangeAccount} value={inputCart.nameAccunt} name="nameAccunt"placeholder="الاسم"  />
           </div>
-        <button 
-        disabled={!isFormValid} 
-        className='add-cart-button' 
-        onClick={()=>pushData()} 
-        ><AddCircleIcon /> أضافة السلة</button>
+            <div className='tow'>
+              <button 
+              disabled={!isFormValid} 
+              className='add-cart-button' 
+              onClick={()=>pushData()} 
+              ><AddCircleIcon /> أضافة السلة</button>
+              <button 
+              disabled={!isFormValid} 
+              className='add-cart-button now' 
+              
+              onClick={()=>pushData("now")} 
+              ><AddCircleIcon />شراء الأن</button>
+          </div>
     </div>
 
   )

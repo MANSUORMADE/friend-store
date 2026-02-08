@@ -4,6 +4,7 @@ import './account.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fatchOrders } from '../../redux/ordersRedux';
 import Animation from '../../componat/animation/animation';
+import Success from '../../componat/succas/success.js';
 import noimg from "./../../images/noimg.png"
 import { ToastContainer,toast } from 'react-toastify';
 import newRequest from '../../utils/newRequest';
@@ -50,20 +51,7 @@ const TheOrder = () => {
     <div className="single-order">
       {loding && <Animation />}
       <ToastContainer />
-  <h3>تفاصل الفاتورة </h3>
-  <div className='user-detals-order'>
-      <main><span>رقم الطلب</span><span>{product.idOrder}</span></main>   
-      <main><span> تاريخ</span><span>{product.time.dateYMD+ product.time.dateAR}</span></main>   
-      <main><span>الأسم</span><span>{product.account.username}</span></main>   
-      <main><span>بريد الإلكتروني</span><span>{product.account.email}</span></main>   
-      <main><span>رقم الهاتف</span><span>{product.account.phone || "فارغ"}</span></main>     
-      <main><span>تعليغ</span><span>{product.account.thankorder || "فارغ"}</span></main>
-      <main><span>طريق الدفع </span><span>{product.whoToPay || null}</span></main>   
-      <main><span>مبلق المدفع</span><span>{product.theBayMony || null}</span></main>   
-      <main><span>رقم العملية </span><span>{product.numberbay || "لا يوجد"}</span></main> 
-      <main><span>قسيمة</span><span>{product.discount && product.codeDiscount || "لا يوجد"}</span></main> 
-      <main><span>حالة الطلب</span><span>{!product.works ? "تم الغاء": product.sortOrder}</span></main> 
-  </div>
+  <Success data={product} />
     <h3>تفاصل الطلب </h3>
 
             {product.carts.map((e,i)=>(
