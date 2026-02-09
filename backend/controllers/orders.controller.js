@@ -112,7 +112,7 @@ export const postOrder = async (req, res)=> {
       const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${"data.account.phone"} السعر الاجمالي 
       = ${data.totalPriceOrder} طريقة الدفع هو ${data.whoToPay} 
       الزمن :  ${data.time.dateHMS}`
-        await sendWhatsApp('249927353157', code);
+        // await sendWhatsApp('249927353157', code);
         await newOrder.save()
         res.status(201).json({data: newOrder, message: "تم أضافة الطلب بجاح"})
     } catch (err) {
