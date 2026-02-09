@@ -69,3 +69,14 @@ export async function sendWhatsApp(phone, otp) {
 //         userID:'...'
 //     }
 // }
+
+{/* <fb:login-button 
+  config_id="{config_id}"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+} */}
