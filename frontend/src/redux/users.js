@@ -27,7 +27,7 @@ const usersSlice = createSlice({
       .addCase(fatchusers.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase( data.isSeller  && fatchusers.fulfilled, (state, action) => {
+      .addCase(fatchusers.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.order = action.payload;
       })
