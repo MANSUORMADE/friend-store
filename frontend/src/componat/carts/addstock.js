@@ -40,7 +40,7 @@ const AddStock = () => {
 
   const isNumberAccount =inputCart.numberAccount
   const isNameAccunt = inputCart.nameAccunt
-  const isFormValid = isNameAccunt && isNumberAccount  && +amount > 0 
+  const isFormValid = isNameAccunt && isNumberAccount  && +amount > 0  && arrayCart
 
   const pushData =  now =>{    
     setLoading(true)  

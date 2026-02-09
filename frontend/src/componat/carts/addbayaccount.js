@@ -91,8 +91,8 @@ const AddBayAccout = () => {
             </div>
           }
           <div className='accuont'>
-            <input type="text" required onChange={handleChangeAccount} value={inputCart.numberAccount} name="numberAccount" placeholder="الأيدي او رقم التسلسول" />
-            <input type="text" required onChange={handleChangeAccount} value={inputCart.nameAccunt} name="nameAccunt"placeholder="الاسم"  />
+            <input type="text" required onChange={handleChangeAccount} value={inputCart.numberAccount} name="numberAccount" placeholder="رقم هاتف او بريد الالكتروني" />
+            <input type="text" required onChange={handleChangeAccount} value={inputCart.nameAccunt} name="nameAccunt"placeholder="كلمة المرور"  />
             <input type="text" required onChange={handleChangeAccount} value={inputCart.cats} name="cats"placeholder="ما نوع الحسابك"  />
           </div>
           <div className='tow'>

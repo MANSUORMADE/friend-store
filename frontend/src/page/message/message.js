@@ -68,7 +68,7 @@ const Message = () => {
                 {dataUser && dataUser.isSeller &&<div onClick={()=>deletemessage(message._id)}>X</div> }
             </div>
             <div  className="messagee">
-                {message &&  message.mess.slice().reverse().map((e,i)=> (
+                {message &&  message.mess.map((e,i)=> (
                 <div key={i} className={`box ${e.id === dataUser.userid && "rew"} `}>
                   {!dataUser.userid  &&  <img src={e.img || allimg.store} alt="img" />} 
                 <div className='info'>
