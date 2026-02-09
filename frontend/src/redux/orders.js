@@ -27,7 +27,7 @@ const adminOrderSlice = createSlice({
       .addCase(fatchadminOrder.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase( data.isSeller  && fatchadminOrder.fulfilled, (state, action) => {
+      .addCase(fatchadminOrder.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.order = action.payload;
       })
