@@ -10,12 +10,15 @@ import { fatchOrders } from '../../redux/ordersRedux';
 import Animation from '../animation/animation';
 import newRequest from '../../utils/newRequest';
 import {createTime} from '../../utils/date.js';
+import upload from '../../utils/upload.js';
 
 const GetId = ({targetGte}) => {
   const dispatch = useDispatch()
   const Navigate = useNavigate()
   const datauser = JSON.parse(localStorage.getItem("dataFriend"))
   const [closeBay, setCloseBay] = useState('')
+  const [getFile, setGetFile] = useState('')
+  const [showimg, setshowimg] = useState('')
   const [loding, setLoding]= useState(false)
 
   const [dataGet, setDataGet] = useState({theMonye: '', numberbay: '', chousbay: '', thankorder: ''})
@@ -25,16 +28,21 @@ const GetId = ({targetGte}) => {
   const isthemonye = dataGet.theMonye > 0
   const isnumberbay = dataGet.numberbay
   const ischousbay = dataGet.chousbay
-  const isthankorder = dataGet.thankorder 
-  const isSubmint = isthemonye && isnumberbay && ischousbay && isthankorder
+  const isSubmint = isthemonye && isnumberbay && ischousbay && getFile
   
   const getOrderSundMonye = async e => {
     e.preventDefault();
     setLoding(true)
     const  {money, img,startTime, ...userinfo} = {...datauser,thankorder: dataGet.thankorder}
             const getTime = createTime(new Date().toISOString()) 
+                const url = await upload(getFile)
             let oop = { 
-              sortBayOrder: "في الأنتظار",
+               sortOrder: {
+                message: "في الأنتظار",
+                color: "#ffa10f",
+                how:'waiting',
+                num: 3,
+              },
               time: getTime.createTime,
               isDiscount:{hove: false, code:'',rate:0},
               account: userinfo,
@@ -42,6 +50,7 @@ const GetId = ({targetGte}) => {
                     id: Date.now(),
                     item:  dataGet.theMonye + "س.ج.",
                     price: dataGet.theMonye,
+                    img: url,
                     pay: "طلب",
                     amount: 1,
                     title: "شحن محفظة",
@@ -56,11 +65,10 @@ const GetId = ({targetGte}) => {
             }
        try {
         const res = await newRequest.post(`orders`, oop)
-        toast.success(res.data)
+        toast.success(res.data.message)
         dispatch(fatchOrders());
-          targetGte()
+          targetGte(res.data.data)
           setLoding(false)
-          Navigate("/account/user-order")
       } catch(err) {
         console.log(err)
           setLoding(false)
@@ -71,6 +79,13 @@ const GetId = ({targetGte}) => {
    const closed = ()=> {
     setCloseBay(!closeBay)
   }
+          const gitFileAmage = (e)=> {
+      setGetFile(e)
+      new Image();
+      let reader = new FileReader();
+      reader.onload = (e) =>   setshowimg(e.target.result)
+      reader.readAsDataURL(e)
+    }
 
   const getdataforbayFuctio = (e)=> {
     console.log(e)
@@ -97,8 +112,9 @@ const GetId = ({targetGte}) => {
                 <input id='setmony' name='theMonye' onChange={handling} type="number" />
                 <label htmlFor="setmony"> أدخل رقم العملية للشعار</label>
                 <input id='setmony' name='numberbay' onChange={handling} type="text" />
-                <label htmlFor="thankorder">ملاحظات للطلب اختياري </label>
-                <textarea name='thankorder' value={dataGet.thankorder}  onChange={handling} placeholder="ملاحظات للطلب (اختياري)" id="" cols="30" rows="3"></textarea>
+                <label htmlFor="img">أرفع الشعار</label>
+                <input id='img' name='img' onChange={e=>gitFileAmage(e.target.files[0])} type="file" />
+                {showimg && <img onClick={e=>e.target.classList.toggle("bik")} alt='img' src={showimg || null} />}
                 <button disabled={ !isSubmint } >تأكيد</button>
             </form>
         </div>

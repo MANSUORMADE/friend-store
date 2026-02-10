@@ -103,7 +103,7 @@ const TheOrder = () => {
 
             {singleorder.carts.map((e,i)=>(
                 <div key={i} className='box'>
-                  <div className='img' ><img src={e.img || noimg} /></div>
+                  <div className='img' ><img onClick={e=>e.target.classList.toggle("bik")}  src={e.img || noimg} /></div>
                   <div className='box-info'>
                             <div className='f'>{e.id}</div>
                       <div className='cart'>

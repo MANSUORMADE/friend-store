@@ -4,8 +4,8 @@ import Suc from './suc.js'
 const success = ({data,what})=> {
     return(
         <div className="success">
-            <Suc data={data.sortOrder}/>
-            <h1>{what ? what : 'طلب'}</h1>
+            <Suc data={{...data.sortOrder, num : 3}}/>
+            <h1>{data?.sortOrder?.message}</h1>
             <div className='info'>
                 <div>رقم الطلب</div>
                 <div>{data.idOrder}</div>

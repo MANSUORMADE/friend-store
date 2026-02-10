@@ -49,6 +49,9 @@ const Diverts = ({closed,targetGte}) => {
     const usbmitdata = async e => { 
       e.preventDefault();
       setLoding(true)
+      const oop ={ 
+        id: Date.now()
+      }
 
       try {
         const resGae = await newRequest.put(`users/decrement/${dataDiverts.userGet._id}`, {num: dataDiverts.money})
@@ -60,8 +63,9 @@ const Diverts = ({closed,targetGte}) => {
           caption:dataDiverts.thankorder
         })
         toast.success("تم التحويل")
+
         setLoding(false)
-        targetGte()
+        targetGte({...dataDiverts, ...oop})
       } catch(err) {
         setLoding(false)
       if(err.message === 'Network Error') return toast.error(err.message)

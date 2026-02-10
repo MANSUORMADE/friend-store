@@ -53,6 +53,7 @@ const OrderSchema = new Schema({
  },
  carts: [
      {
+      img: String,
       id: Number,
       item: String,
       price: String,

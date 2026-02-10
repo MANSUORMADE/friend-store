@@ -1,0 +1,24 @@
+.sund-money {
+    overflow: auto;
+    z-index: 30;
+    background-color: #edf1eff9;
+    color: black;
+    border: 1px solid #aef2d0;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 10px;
+    
+    border-radius: 10px;
+    
+    h1 {
+        margin: 0 auto;
+        text-align: center;
+    }
+    .info {
+        gap: 30px;
+        padding: 5px;
+        display: flex;
+        border: 1px solid #aef2d0;
+        justify-content: space-between;
+    }
+}

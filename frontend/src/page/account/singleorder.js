@@ -56,7 +56,7 @@ const TheOrder = () => {
 
             {product.carts.map((e,i)=>(
                 <div key={i} className='box'>
-                  <div className='img' ><img src={e.img || noimg} /></div>
+                  <div className='img' ><img onClick={e=>e.target.classList.toggle("bik")}  src={e.img || noimg} /></div>{console.log(e)}
                   <div className='box-info'>
                       <div className='cart'>
                         <div className='f-c'>

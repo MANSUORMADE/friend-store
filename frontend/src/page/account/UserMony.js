@@ -31,6 +31,7 @@ const UserMony = () => {
                 <div>{e?.createdAt}</div>  
                 <div className="info">
                   <div>ج.س{Number(e ? e?.money: 0).toLocaleString()}</div>  
+                  <div>رقم الطلب : {e?.id}</div> 
                   <div>تعليق : {e?.caption}</div> 
                 </div>
                 {e && +dataUser.userid === +e?.userGet?.userid ? (
