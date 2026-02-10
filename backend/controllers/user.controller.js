@@ -8,6 +8,31 @@ export const getusers = async (req, res) =>{
     res.status(499).json("error server")
     }
 }
+export const fatlte = async (req, res) =>{
+    try {
+        const { id } = req.params
+        const user = await User.findById(id)
+        if(!user) return res.status(404).json( 'لا يوجد هاذا المستخديم')
+        user.message.falet = false
+        await user.save()
+        res.status(202).send("Ok")
+   } catch(err) {
+    res.status(499).json("error server")
+    }
+}
+export const addMessage = async (req, res) =>{
+    try {
+        const { id } = req.params
+        const message = req.body
+        const user = await User.findById(id)
+        if(!user) return res.status(404).json( 'لا يوجد هاذا المستخديم')
+        user.message = {...user.message,...message}
+        await user.save()
+        res.status(202).send("Ok")
+   } catch(err) {
+    res.status(499).json("error server")
+    }
+}
 export const getTestAdmin = async (req, res) =>{
     try {
         const getData = await User.find()

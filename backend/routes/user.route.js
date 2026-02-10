@@ -1,5 +1,7 @@
 import express from "express";
-import { getusers,getsingleuser,deleteUser,
+import {
+    addMessage,
+     getusers,getsingleuser,deleteUser,
     getTestAdmin,
     updateTestAdmin,
     getsingleuserid,
@@ -15,6 +17,7 @@ import { getusers,getsingleuser,deleteUser,
 
 const router = express.Router();
 
+router.put("/addMessag/:id", addMessage)
 router.get("/", getusers)
 router.get("/testAdmin", getTestAdmin)
 router.put("/updateTestAdmin/:id", updateTestAdmin)

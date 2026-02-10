@@ -28,9 +28,12 @@ const isEmail = /^[a-zA-Z0-9]+@+gmail+.+com+$/.test(dataForm.email)
       const {lastPassword, ...info} = dataForm
       try {
         const res = await newRequest.post("auth/register", info)
-        toast.success(res.data)
-        setLoding(false)
-        setTimeout(()=> { Navigate("/login") },3000)
+        toast.success(res.data.message)
+        setTimeout(()=> { 
+          setLoding(false)
+          localStorage.setItem("dataFriend", JSON.stringify(res.data.user))
+          Navigate("/") 
+         },3000)
       } catch (err) {
         setLoding(false)
           if(err.message === "Network Error") return toast.error(err.message)
@@ -43,7 +46,7 @@ const isEmail = /^[a-zA-Z0-9]+@+gmail+.+com+$/.test(dataForm.email)
     <div className="auth">
       {loding && <Animation />}
         <ToastContainer />
-       <form className='form' onSubmit={handleSubmit}  >
+       <form className='form' onSubmit={!loding ? handleSubmit: null}  >
           <label htmlFor="username">أدخل الأسم</label>
           <input id='username' name="username" type="text" required placeholder="أدخل الأسم" value={dataForm.username} onChange={handleChange}  />
           <label htmlFor="email">أدخل بريد الألكتروني</label>

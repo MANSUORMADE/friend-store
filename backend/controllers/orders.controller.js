@@ -3,7 +3,7 @@ import { postSubscribers } from "./discount.controller.js"
 import Discount from '../models/discount.model.js'
 import User from "../models/user.model.js"
 import Porduct from "../models/product.model.js"
-import { sendTelegramApp} from "./../utils/sendWhatsApp.js"
+import { sendTelegramApp, sendWhatsApp} from "./../utils/sendWhatsApp.js"
 export const getsingleorder = async (req, res) =>{
     try {
         const order = await Order.findById(req.params.id)
@@ -112,7 +112,7 @@ export const postOrder = async (req, res)=> {
       const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${"data.account.phone"} السعر الاجمالي 
       = ${data.totalPriceOrder} طريقة الدفع هو ${data.whoToPay} 
       الزمن :  ${data.time.dateHMS}`
-        // await sendWhatsApp('249927353157', code);
+        await sendWhatsApp('249927353157', code);
         await sendTelegramApp(code);
         await newOrder.save()
         res.status(201).json({data: newOrder, message: "تم أضافة الطلب بجاح"})

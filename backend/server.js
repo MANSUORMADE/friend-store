@@ -20,13 +20,12 @@ app.use(cors())
 app.use(express.json())
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI)
+    await mongoose.connect(process.env.MONGO_URI) 
       console.log('connected to mongoDB')
   } catch (error) {
       console.log(error, 'is not connected')
   }
 }
-
 app.use('/api/upload', imageRoutes);
 app.use("/api/auth", authRouter)
 app.use("/api/users", userRouter)

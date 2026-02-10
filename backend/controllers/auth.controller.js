@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import { sendTelegramApp,sendWhatsApp } from '../utils/sendWhatsApp.js';
 import { sendEmail } from '../utils/sendEmail.js';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
@@ -28,15 +29,18 @@ export const register = async (req, res ) =>{
         const newUser = new  User({...data, 
             userid: new Date().getFullYear() + String(allUser.length + 1).padStart(3, '0'),
             password: hash,
+            message: {
+                falet : true,
+                message: "اهلا وسهلا في الموقع الأصدقاء نرحبك وارجع عن نفيدك في الخدماتنا"
+            },
         })
+        console.log(newUser)
     await newUser.save(); 
-    const html = ` 
-        <h2>أهلاً بك في Friends Store</h2>
-        <p>تم تسجل حساب جديد</p>
-     `;
+    const html = `تم تسجل حساب جديد في الموقع ${newUser.username}`;
     await sendEmail(newUser.email, 'تاكيد حسابك',html )
-    res.status(201).json("تم تسجل حساب جديد")
-    res.status(201).json(newUser)
+            await sendTelegramApp(html);
+            await sendWhatsApp("249927353157",html);
+    res.status(201).json({user: newUser, message: "تم تسجل حسابك بي نجاح"})
    } catch(err) {
     res.status(499).json("error server")
 }
@@ -53,7 +57,7 @@ export const login = async (req, res ) =>{
         const html = ` <h2>أهلاً بك في Friends Store</h2>
         <p>تم تسجل في الحسابك</p>
          `;
-        await sendEmail(info.email, 'تاكيد حسابك',html )
+        // await sendEmail(info.email, 'تاكيد حسابك',html )
         res.status(201).send(info)
     } catch (err) {
         res.status(499).json("error server")

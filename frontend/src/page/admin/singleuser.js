@@ -13,6 +13,7 @@ const TheUser = () => {
     const [loding, setLoding]= useState(false)
     const [colos, setColos ]= useState(false)
     const [num, setNum ]= useState('')
+    const [message, setMessage ]= useState('')
     const [singleData, setSingleData]= useState()
     const getDataallUser = async ()=> {
       setLoding(true)
@@ -77,6 +78,15 @@ const TheUser = () => {
       if(err.message === 'Network Error')  return toast.error(err.message)
           toast.error(err.response.data)      }
   }
+      const sund = async ()=> {
+        try {
+          const res = await newRequest.put(`users/addMessag/${token}`, {message,falet: true})
+          console.log(res.data)
+          getDataallUser()
+        } catch(err) {
+            console.log(err)
+        }
+    }
   
   
   
@@ -101,6 +111,11 @@ const TheUser = () => {
             <input type='number' value={num} onChange={e=>setNum(e.target.value)} />
             <button onClick={increment}>أضافة</button>{console.log(singleData)}
             <button onClick={decrement}>سحب</button>
+          </div>
+          <div>{singleData.message.message}</div>
+          <div className='form-user-money'>
+            <input type='text' value={message} onChange={e=>setMessage(e.target.value)} />
+            <button onClick={sund}>ارسال</button>
           </div>
           <button onClick={()=>updateTestAdmin(singleData._id)} >{singleData.testAdmin ? "ألغاء" : "عميل في موقع"}</button>
      </div>

@@ -47,6 +47,10 @@ isSeller: {
    type: Boolean,
    default: false
 },
+message: {
+   type: Object,
+   default: {message: "ok", falet: true}
+},
 }, {
     timestamps: true
 });
