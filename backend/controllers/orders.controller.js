@@ -109,7 +109,7 @@ export const postOrder = async (req, res)=> {
         const idOrder = String(allorder.length + 1) + String(new Date().getFullYear())  + Math.ceil(Math.random() * 1000)
         const lastTotalPriceOrder = +data.totalPriceOrder - (+data.totalPriceOrder * +discount) / 100
         const newOrder = new Order({...data, idOrder, totalPriceOrder :  lastTotalPriceOrder,  discount: isDiscountb, codeDiscount:data.isDiscount.code})
-      const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${"data.account.phone"} السعر الاجمالي 
+      const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${data.account.phone} السعر الاجمالي 
       = ${data.totalPriceOrder} طريقة الدفع هو ${data.whoToPay} 
       الزمن :  ${data.time.dateHMS}`
         await sendWhatsApp('249927353157', code);
