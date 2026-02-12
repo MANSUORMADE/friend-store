@@ -98,11 +98,11 @@ const GetId = ({targetGte}) => {
       <ToastContainer />
         <div className="outsunupmony">
             <div onClick={()=>targetGte()} className="colos"><ArrowBackIosIcon/></div>
-            <form onSubmit={getOrderSundMonye} className='form'>
+            <form style={{padding: '20px', fontWeight: 'bold', fontSize: "20px"}} onSubmit={getOrderSundMonye} className='form'>
                 <div className='rew'>
                     {closeBay && <ForBay getData={(e)=>getdataforbayFuctio(e)} closed={()=>closed()} />}
                     <AddCardIcon onClick={()=>closed()} />
-                    <p>{dataGet.sort ? (`طريقك الدفع هو ${dataGet.sort}`)  : 'عليك اختياري طريق الدفع'}</p>
+                    <p>{dataGet.sort ? (`طريقك الدفع هو ${dataGet.sort}`)  : 'قوم باختياري طريق الدفع'}</p>
                 </div>
                 <div style={{display:"flex",justifyContent:"space-between"}} className='getBay'>
                   <div>{dataGet.name}:</div>
@@ -110,8 +110,6 @@ const GetId = ({targetGte}) => {
                 </div>
                 <label htmlFor="setmony"> أدخل المبلق</label>  
                 <input id='setmony' name='theMonye' onChange={handling} type="number" />
-                <label htmlFor="setmony"> أدخل رقم العملية للشعار</label>
-                <input id='setmony' name='numberbay' onChange={handling} type="text" />
                 <label htmlFor="img">أرفع الشعار</label>
                 <input id='img' name='img' onChange={e=>gitFileAmage(e.target.files[0])} type="file" />
                 {showimg && <img onClick={e=>e.target.classList.toggle("bik")} alt='img' src={showimg || null} />}
