@@ -28,6 +28,94 @@ const res = await axios.post(`https://graph.facebook.com/v24.0/${process.env.WHA
         );
       console.log(res.data)
 }
+export const sendWhatsAppCode = async (phone, otp) =>{
+  try{
+    const res = await axios.post(`https://graph.facebook.com/v24.0/${process.env.WHATSAPP_PHONE_ID}/messages`,
+          {
+                messaging_product: "whatsapp",
+                to: "249927353157",
+                type: "template",
+                template: {
+                  name: "code",
+                  language: { code: "ar" },
+                  components: [
+                    {
+                      type: "header",
+                      parameters: [
+                        {
+                          type: "text",
+                          text: "name"
+                        }
+                      ]
+                    },
+                    {
+                      type: "body",
+                      parameters: [
+                        {
+                          type: "text",
+                          text: String(otp)
+                        }
+                      ]
+                    },
+                     {
+                      type: "button",
+                      sub_type: "copy_code",
+                      index: "0",
+                      parameters: [
+                        {
+                          type: "coupon_code",
+                          coupon_code: String(otp)
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
+                  "Content-Type": "application/json"
+                }
+              }
+            );
+          console.log(res.data)
+          console.log(phone,otp)
+        } catch(err) {
+    console.log(err.response.data)
+
+  }
+}
+  // components: [
+  //                   {
+  //                     type: "header",
+  //                     parameters: [
+  //                       {
+  //                         type: "text",
+  //                         text: "name"
+  //                       }
+  //                     ]
+  //                   },
+  //                   {
+  //                     type: "body",
+  //                     parameters: [
+  //                       {
+  //                         type: "text",
+  //                         text: String(otp)
+  //                       }
+  //                     ]
+  //                   },
+  //                    {
+  //                     type: "button",
+  //                     sub_type: "copy_code",
+  //                     index: "0",
+  //                     parameters: [
+  //                       {
+  //                         type: "coupon_code",
+  //                         coupon_code: String(otp)
+  //                       }
+  //                     ]
+  //                   }
+  //                 ]
 
 {/* <script> */}
   {/* window.fbAsyncInit = function() {

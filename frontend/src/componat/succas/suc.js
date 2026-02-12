@@ -15,21 +15,21 @@ import NotificationImportantIcon from '@mui/icons-material/NotificationImportant
 const Suc = ({data})=> {
     return(
         <div className={`suc`} >
-             {data?.num === 1 ? (
+             {data?.num === 'one' ? (
                 <div style={{backgroundColor: data.color}} className='message'><CheckCircleIcon /></div>
-            ): data?.num === 2 ? (
+            ): data?.num === 'tow' ? (
                 <div style={{backgroundColor: data.color}} className='message'><HourglassBottomIcon /></div>
-            ): data?.num === 3 ? (
+            ): data?.num === 'three' ? (
                 <div style={{backgroundColor: data.color}} className='message'><AutorenewIcon /></div>
-            ): data?.num === 4 ? (
+            ): data?.num === 'for' ? (
                 <div style={{backgroundColor: data.color}} className='message'><ReportIcon /></div>
-            ): data?.num === 5 ? (
+            ): data?.num === 'fave' ? (
             <div style={{backgroundColor: data.color}} className='message'><PriorityHighIcon /></div>
-            ): data?.num === 6 ? (
+            ): data?.num === 'six' ? (
                 <div style={{backgroundColor: data.color}} className='message'><WarningAmberIcon /></div>
-            ): data?.num === 7 ? (
+            ): data?.num === 'saven' ? (
                 <div style={{backgroundColor: data.color}} className='message'><AddTaskIcon /></div> 
-            ): data?.num === 7 ? (
+            ): data?.num === 'eite' ? (
                 <div style={{backgroundColor: data.color}} className='message'><NotificationImportantIcon /></div>
             ): (
             <div style={{backgroundColor: data.color}} className='message'><ErrorIcon /></div> 

@@ -29,9 +29,9 @@ const isEmail = /^[a-zA-Z0-9]+@+gmail+.+com+$/.test(dataForm.email)
       try {
         const res = await newRequest.post("auth/register", info)
         toast.success(res.data.message)
+        localStorage.setItem("dataFriend", JSON.stringify(res.data.user))
         setTimeout(()=> { 
           setLoding(false)
-          localStorage.setItem("dataFriend", JSON.stringify(res.data.user))
           Navigate("/") 
          },3000)
       } catch (err) {

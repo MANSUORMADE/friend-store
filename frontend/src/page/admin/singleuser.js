@@ -13,6 +13,7 @@ const TheUser = () => {
     const [loding, setLoding]= useState(false)
     const [colos, setColos ]= useState(false)
     const [num, setNum ]= useState('')
+    const [password, setPassword ]= useState('')
     const [message, setMessage ]= useState('')
     const [singleData, setSingleData]= useState()
     const getDataallUser = async ()=> {
@@ -88,6 +89,16 @@ const TheUser = () => {
         }
     }
   
+      const newPassaord = async  e => {
+        try {
+          const res = await newRequest.post(`auth/updatepassword`, {email : singleData.email, password})
+          console.log(res.data)
+          getDataallUser()
+        } catch(err) {
+            console.log(err)
+        }
+    }
+  
   
   
   if (!singleData) return <p>المستخدم غير موجود</p>;
@@ -116,6 +127,10 @@ const TheUser = () => {
           <div className='form-user-money'>
             <input type='text' value={message} onChange={e=>setMessage(e.target.value)} />
             <button onClick={sund}>ارسال</button>
+          </div>
+          <div className='form-user-money'>
+            <input type='text' value={password} onChange={e=>setPassword(e.target.value)} />
+            <button onClick={()=>newPassaord(singleData._idd)}>new password</button>
           </div>
           <button onClick={()=>updateTestAdmin(singleData._id)} >{singleData.testAdmin ? "ألغاء" : "عميل في موقع"}</button>
      </div>

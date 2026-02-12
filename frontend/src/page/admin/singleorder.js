@@ -14,7 +14,7 @@ const TheOrder = () => {
   const [idcart, setIdcart]= useState()
   const [items, setItems]= useState([])
   const [singleorder, setSingleRder]= useState('')
-  const [success, setSuccess]= useState({color: '', message: ''})
+  const [success, setSuccess]= useState({color: '', message: '',num: ''})
   const [cart, setCart]= useState()
   const gedivataallUser = async ()=> {
     setLoding(true)
@@ -67,6 +67,7 @@ const TheOrder = () => {
         sortOrder: {
           color: success.color,
           message: success.message,
+          num: success.num,
         }
 
       }
@@ -95,10 +96,11 @@ const TheOrder = () => {
   }
   return (
     <div className="single-order">
-      <ToastContainer />
+      <ToastContainer /> 
       {loding && <Animation />}
   <h3>تفاصل الفاتورة </h3>
     <Success data={singleorder} />
+    {console.log(singleorder)}
     <h3>تفاصل الطلب </h3>
 
             {singleorder.carts.map((e,i)=>(
@@ -159,6 +161,7 @@ const TheOrder = () => {
             <div className='butt'>
                 <button onClick={()=>addcartf()}>أضافة للطلب</button>
                 <input type='color' value={success.color} name="color" onChange={handleChange} />
+                <input type='text' value={success.num} name="num" onChange={handleChange} placeholder='num' />
                 <input type='text' value={success.message} name="message" onChange={handleChange} />
                 <button onClick={()=>addcartserver()}>أضافة للطلب في السيرفر</button>
                 <button onClick={()=>deletOrder(singleorder._id)}>حذف الطلب من السيرفر</button>

@@ -8,6 +8,7 @@ import Animation from '../../componat/animation/animation';
 const Reast = () => {
   const dataUser = JSON.parse(localStorage.getItem("dataFriend"))
   const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [loding, setLoding]= useState(false)
  
   useEffect(()=> {
@@ -16,10 +17,11 @@ const Reast = () => {
       e.preventDefault();
     setLoding(true)
     try {
-      const res = await newRequest.post("auth/reast", {email}) 
+      const res = await newRequest.post("auth/reast", {email, phone}) 
       toast.success(res.data)
       setLoding(false)
       setEmail("")
+      setPhone("")
     } catch(err) {
       setLoding(false)
       if(err.message === "Network Error") return toast.error(err.message)
@@ -32,9 +34,11 @@ const Reast = () => {
         <ToastContainer />
         <form className='form' onSubmit={e=>handleSubmit(e)}>
             <h4>يمكنك أدخال بريد الصحيح  لي  اعادة كلمة المرور</h4>
-            <label htmlFor='email'>بريد الألكتروني</label>
-            <input id='email' type="text" onChange={e=>setEmail(e.target.value)} placeholder="ادخل بريد الألكتروني " />
-            <button onClick={handleSubmit} disabled={!email}>تأكيد</button>
+            <label htmlFor='phone'>بريد الألكتروني</label>
+            <input id='phone' type="text" value={phone} onChange={e=>setPhone(e.target.value)} placeholder="ادخل رقم الهاتف " />
+            <button onClick={handleSubmit} disabled={!phone}>تأكيد</button>
+            {/* <input id='email' type="text" onChange={e=>setEmail(e.target.value)} placeholder="ادخل بريد الألكتروني " />
+            <button onClick={handleSubmit} disabled={!email}>تأكيد</button> */}
             <div className="forget">
                 <Link to="/login" className="forgod">تسجل دخول</Link>
                 <Link to="/register">أنشاء حساب</Link>

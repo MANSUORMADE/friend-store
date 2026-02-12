@@ -1,17 +1,20 @@
 import User from "../models/user.model.js";
-import { sendTelegramApp,sendWhatsApp } from '../utils/sendWhatsApp.js';
+import { sendTelegramApp,sendWhatsApp, sendWhatsAppCode } from '../utils/sendWhatsApp.js';
 import { sendEmail } from '../utils/sendEmail.js';
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 export const forgod = async (req, res ) =>{
     try {
-        const { email } = req.body
-        const user = await User.findOne({email : email});
-        if(!user) return res.status(404).json( 'الحساب غير موجود لي')
-        const token = jwt.sign({email: user.email}, process.env.JWT_KEY, {expiresIn: '30m'} )
-        const link = `${process.env.CLIENT_API}/reast-password/${token}`
-        const html = ` <h2>أهلاً بك في Friends Store</h2> <p>اضغط لتأكيد حسابك:</p> <a href="${link}">${link}</a> `;
-        await sendEmail(user.email, 'تاكيد حسابك',html )
+        const { email,phone } = req.body
+        // const user = await User.findOne({email : email});
+        // if(!user) return res.status(404).json( 'الحساب غير موجود لي')
+        // const token = jwt.sign({email: user.email}, process.env.JWT_KEY, {expiresIn: '30m'} )
+        // const link = `${process.env.CLIENT_API}/reast-password/${token}`
+        // const html = ` <h2>أهلاً بك في Friends Store</h2> <p>اضغط لتأكيد حسابك:</p> <a href="${link}">${link}</a> `;
+        // await sendEmail(user.email, 'تاكيد حسابك',html )
+        const code = Math.floor(100000 + Math.random() * 900000)
+
+        await sendWhatsAppCode(phone,code)
         res.status(201).json('سوفا نرسل لك رابط في البريد الالكتروني لتغير كلمة المرور')
     } catch (err) {
         res.status(499).json("error server")
@@ -83,16 +86,16 @@ export const admined = async (req, res ) =>{
 }
 export const updatepassword = async (req, res ) => {
     try {
-        const { token, newpassword } = req.body
-        const decoded = jwt.verify(token, process.env.JWT_KEY)
-        const user = await User.findOne({email: decoded.email});
+        const { password,email } = req.body
+        // const decoded = jwt.verify(token, process.env.JWT_KEY)
+        const user = await User.findOne({email: email});
         if(!user) return res.status(404).json( 'الحساب غير موجود لي')
-        user.password = bcrypt.hashSync(newpassword,5)
+        user.password = bcrypt.hashSync(password,5)
         await user.save()
         const html = ` <h2>أهلاً بك في Friends Store</h2>
         <p>تم تغير كلمة السر</p>
          `;
-        await sendEmail(user.email, 'تاكيد حسابك',html )
+        // await sendEmail(user.email, 'تاكيد حسابك',html )
         res.status(200).json('تم تغير كلمة السر الأن يمكنك تسجيل دخول')
     }catch (err) {
         res.status(499).json("error server")
