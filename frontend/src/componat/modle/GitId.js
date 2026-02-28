@@ -35,11 +35,11 @@ const GetId = ({targetGte}) => {
             const getTime = createTime(new Date().toISOString()) 
                 const url = await upload(getFile)
             let oop = { 
+              sortBayOrder: '',
                sortOrder: {
                 message: "في الأنتظار",
                 color: "#ffa10f",
-                how:'waiting',
-                num: 3,
+                num: 'tow',
               },
               time: getTime.createTime,
               isDiscount:{hove: false, code:'',rate:0},
@@ -58,8 +58,8 @@ const GetId = ({targetGte}) => {
                 }],
               totalPriceOrder: dataGet.theMonye,
               whoToPay: "دفع الأن",
-              numberbay:   dataGet.numberbay,
-              theBayMony: `دفع من ${dataGet.chousbay}` ,
+              numberbay:  '',
+              theBayMony: `دفع من ` ,
             }
        try {
         const res = await newRequest.post(`orders`, oop)

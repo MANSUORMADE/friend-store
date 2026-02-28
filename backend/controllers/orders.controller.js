@@ -79,41 +79,20 @@ export const postOrder = async (req, res)=> {
             }
             user.money = +user.money - (+data.totalPriceOrder  - (+data.totalPriceOrder * +discount) / 100)
             await user.save()
-        } else if(data.whoToPay === "دفع الأن") {
-            const filterpostorder = allorder.filter(t=>t.works !== true)
-            const findbay =  filterpostorder.find(e=>+e.numberbay === +data.numberbay)
-            if(findbay) return res.status(404).json( "رقم العملية موجود من قبل عليك ارسال رقم عملية مختلف لي اتمم الطلب")
-            const filte = Porduct.find();
-            for(let e=0; e < data.carts.length; e++) {
-                for(let a=0; a < filte.length; a++) {
-                    if(filte[a].title === data.carts[e].sort) {
-                        for(let w=0; w<filte[a].items.length; w++){
-                            if(filte[a].items[w].titleProduce === data.carts[e].title ) {
-                                for(let q=0; q<filte[a].items[w].cart.length; q++){
-                                    const testitme = filte[a].items[w].cart[q].item === data.carts[e].item
-                                    if(testitme) {
-                                            const testprice = +filte[a].items[w].cart[q].price === +data.carts[e].price
-                                            const testfint = filte[a].items[w].cart[q].font
-                                            // if(!testitme) return res.status(404).json( "تم تعديل البيانات المنتج في الموقع عليك ازلة البيانات في  العربة")
-                                            if(!testfint) return res.status(404).json( "تم تعديل البيانات في الموقع عليك ازلة البيانات في العربة")
-                                            if(!testprice) return res.status(404).json( "تم تعديل البيانات السعر في الموقع عليك ازلة البيانات في  العربة")
-                                        }
-                                }
-                            }
-                        }
-                    }
-                }
-            }     
+        } else if(data.whoToPay === "دفع الأن") { 
+            
         } else return res.status(404).json( "هناك خطا في البيانات")
         const isDiscountb = discount > 0 ? true: false 
         const idOrder = String(allorder.length + 1) + String(new Date().getFullYear())  + Math.ceil(Math.random() * 1000)
         const lastTotalPriceOrder = +data.totalPriceOrder - (+data.totalPriceOrder * +discount) / 100
         const newOrder = new Order({...data, idOrder, totalPriceOrder :  lastTotalPriceOrder,  discount: isDiscountb, codeDiscount:data.isDiscount.code})
-      const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${data.account.phone} السعر الاجمالي 
+      const code = `تم اضافة طلب جديد من ${data.account.userid} رقم الطلب ${data.account.phone} ${data.account.name} السعر الاجمالي 
       = ${data.totalPriceOrder} طريقة الدفع هو ${data.whoToPay} 
+
       الزمن :  ${data.time.dateHMS}`
-        await sendWhatsApp('249927353157', code);
+        // await sendWhatsApp('249927353157', code);
         await sendTelegramApp(code);
+        console.log(newOrder)
         await newOrder.save()
         res.status(201).json({data: newOrder, message: "تم أضافة الطلب بجاح"})
     } catch (err) {

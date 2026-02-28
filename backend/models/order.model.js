@@ -25,19 +25,19 @@ const OrderSchema = new Schema({
  },
  theBayMony: {
     type: String,
-    required: true,
+    required: false,
  },
  numberbay: {
     type: String,
-    required: true,
+    required: false,
  },
  whoToPay: {
     type: String,
-    required: true,
+    required: false,
  },
  totalPriceOrder: {
     type: Number,
-    required: true,
+    required: false,
  },
  account:    {
       type: Object,
@@ -51,19 +51,10 @@ const OrderSchema = new Schema({
       type: Object,
       required: true,
  },
- carts: [
-     {
-      img: String,
-      id: Number,
-      item: String,
-      price: String,
-      sort: String,
-      pay: String,
-      amount: String,
-      title: String,
-      skills: Object,
-      items: Object,
-    } ],
+ carts:   {
+      type: Object,
+      required: true,
+ },
 }, {
     timestamps: true
 });

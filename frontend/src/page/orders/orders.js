@@ -62,7 +62,7 @@ const SubmitOrdre = async (e)=> {
           sortOrder: {
             message: "في الأنتظار",
             color: "#ffa10f",
-            num: 3
+            num: "tow"
           },
           account: userinfo,
           carts: products,
@@ -145,12 +145,12 @@ const closeOrder =()=> {
                   <li><span>الرصيدك</span> <span>ج.س.{Number(dataUser?.money).toLocaleString()}</span>  </li>
                 </ul>
                 <textarea  value={thankorder}  onChange={e=>setThankorder(e.target.value)} placeholder="ملاحظات للطلب (اختياري)" id="" cols="30" rows="3"></textarea>
-                <div className="joset">
+                            <h2 htmlFor="sortBay1">من المحفظة</h2>
+                {/* <div className="joset">
                       <h2>أختار طريق الدفع</h2>
                       <div className="choosePay">
                           <div className="number">
                             <input   type="radio" id="sortBay1"  name="sortBayBay" required onChange={e=>setGetBay({...getBay,sortBay:e.target.value})} value="المحفظة" />
-                            <label htmlFor="sortBay1">من المحفظة</label>
                           </div>
                           <div className="number">
                             <input type="radio" id="sortBay2" name="sortBayBay"required onChange={e=>setGetBay({...getBay,sortBay:e.target.value})} value="دفع الأن"  />
@@ -171,7 +171,7 @@ const closeOrder =()=> {
                         </div>
                       </div>
                       }
-                </div>
+                </div> */}
               <div>
                 <div className="checkbox">
                     <input type="checkbox" name='userChak'  onChange={()=>setCheckboxe(!checkboxe)} required id="checkbox"  />
