@@ -21,7 +21,7 @@ const Add = () => {
 
   const [product, setProduct] = useState({title: "", img: "", paragraphs: [], items: []});
   const [items, setItems] = useState({titleProduce: '', sort: "", cart: [], });
-  const [cart, setCart] = useState('');
+  const [cart, setCart] = useState({item: "", price: "",font: false});
   const handlCart = (e)=> setCart(prev =>{ return {...prev, [e.target.name]: e.target.value}})
 
     const getDataProduct = async ()=> {
@@ -47,8 +47,16 @@ const Add = () => {
   },[])
   
   const addCart = () => {
+    const find = items.cart.find(w=>w.item === cart.item)
+    if(find) {
+      find.item = cart.item
+      find.price = cart.price
+      find.font = cart.font
+      console.log(find)
+      return
+    }
     items.cart.push(cart)
-    setCart("")
+    setCart({item: "", price: ""})
   }
   const addItems = () => {
 if(!items.sort) return toast.error("أختار طريق الشحن")
@@ -127,6 +135,7 @@ const deleteItems = se=> {
 }
 const updateItme = ()=> {
   const find = items.cart.find(i=>i._id === cart?._id)
+  if(!find) return
   find.item = cart.item
   find.price = cart.price
   setItems({...items})
@@ -154,11 +163,11 @@ return (
               <div className='cart'>
                 <input type="text" name='item' onChange={handlCart} value={cart?.item} placeholder="منتج" />
                 <input type="text" name='price' onChange={handlCart} value={cart?.price} placeholder="سعر المنتج" />
-              {cart ? (
+              {/* {cart?.item ? (
                 <button onClick={()=>updateItme()}>تحديث</button>
-                ):(
+                ):( */}
                   <button onClick={()=>addCart()}>أضافة</button>
-              )}
+              {/* )} */}
               </div>
               <ul>
                 {items.cart.map((e,i)=>(

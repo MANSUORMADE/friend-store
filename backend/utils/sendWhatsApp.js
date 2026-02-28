@@ -34,7 +34,22 @@ export const sendWhatsAppCode = async (phone, otp) =>{
           {
                 messaging_product: "whatsapp",
                 to: "249927353157",
-                type: "template",
+                type: "templظate",
+                template: {
+                  name: "code",
+                  language: { code: "ar" },
+                   components: [
+                    {
+                      type: "header",
+                      parameters: [
+                        {
+                          type: "text",
+                          text: "name"
+                        }
+                      ]
+                    },
+                   ]
+                },
                 template: {
                   name: "code",
                   language: { code: "ar" },
@@ -64,7 +79,7 @@ export const sendWhatsAppCode = async (phone, otp) =>{
                       parameters: [
                         {
                           type: "coupon_code",
-                          coupon_code: String(otp)
+                          coupon_code: "54656656"
                         }
                       ]
                     }

@@ -26,9 +26,7 @@ const GetId = ({targetGte}) => {
   const handling = (e) =>  setDataGet(prev=> {  return {...prev, [e.target.name]: e.target.value} })
   
   const isthemonye = dataGet.theMonye > 0
-  const isnumberbay = dataGet.numberbay
-  const ischousbay = dataGet.chousbay
-  const isSubmint = isthemonye && isnumberbay && ischousbay && getFile
+  const isSubmint = isthemonye && getFile
   
   const getOrderSundMonye = async e => {
     e.preventDefault();
