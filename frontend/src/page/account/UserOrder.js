@@ -29,7 +29,7 @@ const UserOrder = () => {
                       </div>
                       <div className='right'>
                         <div className='linked' style={{backgroundColor: e?.sortOrder?.color || '#eee'}}>{e?.sortOrder?.message}</div>
-                        <Suc data={e.sortOrder} />
+                        <Suc data={e.sortOrder} /> {console.log(e)}
                       </div>
                     </Link>
                 )) }

@@ -2,10 +2,10 @@ import './admin.scss'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { fatchadminOrder } from '../../redux/orders.js';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import Animation from '../../componat/animation/animation';
 import Suc from '../../componat/succas/suc.js';
-import { fatchadminOrder } from '../../redux/orders.js';
 
 const UserOrder = () => {
   const dispatch = useDispatch()
@@ -34,7 +34,7 @@ const UserOrder = () => {
       </div>     
       <h2>كل طلبات = {order.length}</h2>
                 { getserch && (
-                       <div className='box'  >
+                       <Link to={`/admin/single-order/${getserch._id}`} className='box'  >
                       <div className='left'>
                           <div>{getserch._id}</div>  
                           <div>{getserch.createdAt}</div>  
@@ -42,22 +42,22 @@ const UserOrder = () => {
                         <div>{Number(getserch.totalPriceOrder).toLocaleString()}س.ج : {getserch.carts.length}عنصر</div>
                       </div>
                       <div className='right'>
-                        <div className='linked'><Link to={`/account/single-order/${getserch._id}`} >عرض</Link></div>
+                        <div className='linked' style={{backgroundColor: getserch?.sortOrder?.color || '#eee'}}>{getserch?.sortOrder?.message}</div>
                         <Suc data={getserch.sortOrder} />
                       </div>
-                    </div>
+                    </Link>
                   ) }
               { order.slice().reverse().map((e,i)=>(
-                    <div className='box' key={i} >
+                    <Link to={`/admin/single-order/${e._id}`} className='box' key={i} >
                       <div className='left'>
                         <div>{`${e.time.dateYMD} : ${e.time.dateAR} : ${e.time.dateHMS}`}</div>  
                         <div>{Number(e.totalPriceOrder).toLocaleString()}س.ج : {e.carts.length}عنصر</div>
                       </div>
                       <div className='right'>
-                        <div className='linked'><Link to={`/admin/single-order/${e._id}`} >عرض</Link></div>
+                        <div className='linked' style={{backgroundColor: e?.sortOrder?.color || '#eee'}}>{e?.sortOrder?.message}</div>
                         <Suc data={e.sortOrder} />
                       </div>
-                    </div>
+                    </Link>
                 )) }
     </div>
   )

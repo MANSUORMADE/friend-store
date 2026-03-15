@@ -2,36 +2,47 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './admin.scss';
 import newRequest from '../../utils/newRequest';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fatchadminOrder } from '../../redux/orders.js';
 import Success from '../../componat/succas/success.js';
 import Animation from '../../componat/animation/animation';
 import noimg from './../../images/noimg.png'
 import { ToastContainer, toast } from 'react-toastify';
+
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ReportIcon from '@mui/icons-material/Report';
+import ErrorIcon from '@mui/icons-material/Error';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import NotificationImportantIcon from '@mui/icons-material/NotificationImportant';
+
+
 const TheOrder = () => {
+  const dispatch = useDispatch()
   const Navigate = useNavigate()
   const { id } = useParams()
   
   const [loding, setLoding]= useState(false)
   const [idcart, setIdcart]= useState()
   const [items, setItems]= useState([])
-  const [singleorder, setSingleRder]= useState('')
+  // const [singleorder, setSingleRder]= useState('')
   const [success, setSuccess]= useState({color: '', message: '',num: ''})
   const [cart, setCart]= useState()
-  const gedivataallUser = async ()=> {
-    setLoding(true)
-    try{
-      const res = await newRequest.get(`orders/single/${id}`)
-      setSingleRder(res.data)
-      setLoding(false)
-    } catch(err) {
-      setLoding(false)
-       if(err.message === 'Network Error')  return toast.error(err.message)
-          toast.error(err.response.data)      }
-  }
-  useEffect(()=> {
-    gedivataallUser()
-  },[])
-  if (loding) return <Animation />
+    const {order , status} = useSelector((state) => state.adminOrder); 
+    useEffect(()=> {
+      if(status == 'idle') {
+        dispatch(fatchadminOrder());
+      }
+    },[status, dispatch])
   
+  
+    if (status === 'loading') return <Animation />;
+    if (!order) return <p>المنتج غير موجود</p>;
+    const singleorder = order.find(i=>i._id === id)
+
   if (!singleorder) return <p>المنتج غير موجود</p>;
   
   const stoporder = async ()=> {
@@ -39,7 +50,7 @@ const TheOrder = () => {
     try {
       const res = await newRequest.put(`orders/${singleorder._id}`,{...singleorder, works: false, sortOrder: "تم الغاء"})
       toast.success(res.data)
-      gedivataallUser()
+            dispatch(fatchadminOrder());
       setLoding(false)
     } catch(err) {
       setLoding(false)
@@ -71,11 +82,12 @@ const TheOrder = () => {
         }
 
       }
+      console.log(oop)
       try {
-        const res = await newRequest.put(`orders/${singleorder._id}`,oop)
-        toast.success(res.data)
-        setCart('')
-        gedivataallUser()
+        // const res = await newRequest.put(`orders/${singleorder._id}`,oop)
+        // toast.success(res.data)
+        //   dispatch(fatchadminOrder());
+        // setCart('')
         setLoding(false)
       } catch(err) {
         setLoding(false)
@@ -88,6 +100,7 @@ const TheOrder = () => {
         const res = await newRequest.delete(`orders/${id}`)
         toast.success(res.data)
         setLoding(false)
+        dispatch(fatchadminOrder());
         Navigate("/admin/orders")
       } catch(err) {
         setLoding(false)
@@ -100,7 +113,6 @@ const TheOrder = () => {
       {loding && <Animation />}
   <h3>تفاصل الفاتورة </h3>
     <Success data={singleorder} />
-    {console.log(singleorder)}
     <h3>تفاصل الطلب </h3>
 
             {singleorder.carts.map((e,i)=>(
@@ -160,9 +172,19 @@ const TheOrder = () => {
               <div>{items}</div>
             <div className='butt'>
                 <button onClick={()=>addcartf()}>أضافة للطلب</button>
+            <div style={{display: 'flex'}}>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "saven"})}><AddTaskIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "one"})}><CheckCircleIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "three"})}><AutorenewIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "tow"})}><HourglassBottomIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "for"})}><ReportIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "fave"})}><PriorityHighIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "six"})}><WarningAmberIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: "eite"})}><NotificationImportantIcon/></div>
+                <div style={{cursor: "pointer", color:success.color || ''}} onClick={()=>setSuccess({...success, num: ""})}><ErrorIcon/></div>
                 <input type='color' value={success.color} name="color" onChange={handleChange} />
-                <input type='text' value={success.num} name="num" onChange={handleChange} placeholder='num' />
                 <input type='text' value={success.message} name="message" onChange={handleChange} />
+            </div>
                 <button onClick={()=>addcartserver()}>أضافة للطلب في السيرفر</button>
                 <button onClick={()=>deletOrder(singleorder._id)}>حذف الطلب من السيرفر</button>
             </div>
