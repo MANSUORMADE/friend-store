@@ -6,7 +6,7 @@ const UserIntroduction = () => {
   return (
     <div className="user-introduction">
         <div className="container">
-            <p>هنا نقدم لك المنتجات الكثيرة يمكنة اختيار </p>
+            <p> صفحة لي تفاصيل المستخدم </p>
         </div>
   </div>
   )

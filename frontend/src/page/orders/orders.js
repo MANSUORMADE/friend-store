@@ -92,7 +92,7 @@ const closeOrder =()=> {
 }
   return (
     <div className="orders">
-       {loding && <Animation />} {console.log(message)}
+       {loding && <Animation />}
        {message && (
             <div className="backdrop">
                 <div className="outsunupmony">
@@ -111,12 +111,11 @@ const closeOrder =()=> {
                     <div className='bt' onClick={()=>postCode("test")}>تأكيد</div>
                 </div> 
                 <ul className='user-monye'>
-                  <li> <span>المجموعة</span> <span>ج.س.{Number(totalPrice(products)).toLocaleString()}</span> </li>
-                  <li> <span>الأجمالية</span> <span>ج.س.{Number(totalPrice(products) - ((totalPrice(products) * +discount.rate) / 100)).toLocaleString()}</span> </li>
                   <li><span>الرصيدك</span> <span>ج.س.{Number(dataUser?.money).toLocaleString()}</span>  </li>
+                  <li><h1>طريقة الدفع من المحفظة</h1></li>
+                  <li> <span>المجموعة : ج.س{Number(totalPrice(products)).toLocaleString()}</span> <span>الأجمالية : ج.س.{Number(totalPrice(products) - ((totalPrice(products) * +discount.rate) / 100)).toLocaleString()}</span> </li>
                 </ul>
-                <textarea  value={thankorder}  onChange={e=>setThankorder(e.target.value)} placeholder="ملاحظات للطلب (اختياري)" id="" cols="30" rows="3"></textarea>
-                <h2 htmlFor="sortBay1">من المحفظة</h2>
+                <textarea  value={thankorder}  onChange={e=>setThankorder(e.target.value)} placeholder="ملاحظات للطلب (اختياري)" id="" cols="62" rows="4"></textarea>
               <div>
                 <div className="checkbox">
                     <input type="checkbox" name='userChak'  onChange={()=>setCheckboxe(!checkboxe)} required id="checkbox"  />
