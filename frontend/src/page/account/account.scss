@@ -171,17 +171,10 @@
                    align-items: center;
                    gap: 40px;
                    .linked {
-                       // position: absolute;
-                       left: 0;
-                       bottom: 0;
-                       margin: 5px;
-                       a {
-                           padding: 5px;
-                           background-color: var(--main-color);
-                           color: #fff;
-                           border-radius: 10px;
-           
-                       }
+                        color: #fff;
+                        padding: 5px 10px;
+                        font-weight: bold;
+                        border-radius: 10px;
                    }
                }
                .left {

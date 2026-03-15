@@ -22,16 +22,16 @@ const UserOrder = () => {
     <div className="user-order">
             <h2>كل طلبات {order.length}</h2>
               { order.slice().reverse().map((e,i)=>(
-                    <div className='box' key={i} >
+                    <Link to={`/account/single-order/${e._id}`} className='box' key={i} >
                       <div className='left'>
                         <div>{`${e.time.dateYMD} : ${e.time.dateAR} : ${e.time.dateHMS}`}</div>  
                         <div>{Number(e.totalPriceOrder).toLocaleString()}س.ج : {e.carts.length}عنصر</div>
                       </div>
                       <div className='right'>
-                        <div className='linked'><Link to={`/account/single-order/${e._id}`} >عرض</Link></div>
+                        <div className='linked' style={{backgroundColor: e?.sortOrder?.color || '#eee'}}>{e?.sortOrder?.message}</div>
                         <Suc data={e.sortOrder} />
                       </div>
-                    </div>
+                    </Link>
                 )) }
     </div>
   )
