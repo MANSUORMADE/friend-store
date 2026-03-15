@@ -115,7 +115,7 @@ const closeOrder =()=> {
                   <li><h1>طريقة الدفع من المحفظة</h1></li>
                   <li> <span>المجموعة : ج.س{Number(totalPrice(products)).toLocaleString()}</span> <span>الأجمالية : ج.س.{Number(totalPrice(products) - ((totalPrice(products) * +discount.rate) / 100)).toLocaleString()}</span> </li>
                 </ul>
-                <textarea  value={thankorder}  onChange={e=>setThankorder(e.target.value)} placeholder="ملاحظات للطلب (اختياري)" id="" cols="62" rows="4"></textarea>
+                <textarea  value={thankorder}  onChange={e=>setThankorder(e.target.value)} placeholder="ملاحظات للطلب (اختياري)" id="" cols="32" rows="4"></textarea>
               <div>
                 <div className="checkbox">
                     <input type="checkbox" name='userChak'  onChange={()=>setCheckboxe(!checkboxe)} required id="checkbox"  />
