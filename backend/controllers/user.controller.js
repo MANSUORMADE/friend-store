@@ -55,10 +55,13 @@ export const getTestAdmin = async (req, res) =>{
 export const updateTestAdmin = async (req, res) =>{
     try {
         const { id } = req.params
-        const {update} = req.body
+        const data = req.body
         const user = await User.findById(id)
         if(!user) return res.status(404).json( 'لا يوجد هاذا المستخديم')
-        user.testAdmin = !user.testAdmin
+        user.testAdmin = data.testAdmin
+        user.admin = data.admin
+        user.isWorke = data.isWorke
+        user.isSeller = data.isSeller
         await user.save()
         res.status(201).json("تم التعديل البيانات")
    } catch(err) {
@@ -70,7 +73,7 @@ export const getsingleuser = async (req, res) =>{
     try {
         const user = await User.findById(req.params.id)
         if(!user) return res.status(404).json( "هاذا المستخدم غير موجود")
-        const  {admin,password, ...info} =  user._doc
+        const  {password, ...info} =  user._doc
     res.status(201).send(info)
    } catch(err) {
        res.status(499).json("error server")

@@ -82,12 +82,11 @@ const TheOrder = () => {
         }
 
       }
-      console.log(oop)
       try {
-        // const res = await newRequest.put(`orders/${singleorder._id}`,oop)
-        // toast.success(res.data)
-        //   dispatch(fatchadminOrder());
-        // setCart('')
+        const res = await newRequest.put(`orders/${singleorder._id}`,oop)
+        toast.success(res.data)
+          dispatch(fatchadminOrder());
+        setCart('')
         setLoding(false)
       } catch(err) {
         setLoding(false)

@@ -39,7 +39,33 @@ const TheUser = () => {
   const updateTestAdmin = async ()=> {
     setLoding(true)
     try{
-      const res = await newRequest.put(`users/updateTestAdmin/${token}`, {update: !singleData.updateTestAdmin})
+      const res = await newRequest.put(`users/updateTestAdmin/${token}`, {...singleData, testAdmin: !singleData.testAdmin})
+      toast.success(res.data)
+      setLoding(false)
+      getDataallUser()
+    } catch(err) {
+      setLoding(false)
+      getDataallUser()
+      if(err.message === 'Network Error')  return toast.error(err.message)
+      toast.error(err.response.data)      }
+  }
+  const updateisSeller = async ()=> {
+    setLoding(true)
+    try{
+      const res = await newRequest.put(`users/updateTestAdmin/${token}`, {...singleData, isSeller: !singleData.isSeller})
+      toast.success(res.data)
+      setLoding(false)
+      getDataallUser()
+    } catch(err) {
+      setLoding(false)
+      getDataallUser()
+      if(err.message === 'Network Error')  return toast.error(err.message)
+      toast.error(err.response.data)      }
+  }
+  const updateisWorke = async ()=> {
+    setLoding(true)
+    try{
+      const res = await newRequest.put(`users/updateTestAdmin/${token}`, {...singleData, isWorke: !singleData.isWorke})
       toast.success(res.data)
       setNum('')
       setLoding(false)
@@ -50,6 +76,20 @@ const TheUser = () => {
       if(err.message === 'Network Error')  return toast.error(err.message)
       toast.error(err.response.data)      }
   }
+  const updateadmin = async ()=> {
+    setLoding(true)
+    try{
+      const res = await newRequest.put(`users/updateTestAdmin/${token}`, {...singleData, admin: !singleData.admin})
+      toast.success(res.data)
+      setLoding(false)
+      getDataallUser()
+    } catch(err) {
+      setLoding(false)
+      getDataallUser()
+      if(err.message === 'Network Error')  return toast.error(err.message)
+      toast.error(err.response.data)      }
+  }
+
   const decrement = async ()=> {
     setLoding(true)
     try{
@@ -116,23 +156,25 @@ const TheUser = () => {
           <main><span>بريد الإلكتروني</span><span>{singleData.email}</span></main>   
           <main><span>رقم الهاتف</span><span>{singleData.phone || "فارغ"}</span></main>     
           <main><span>زمن التسجل</span><span>{singleData.createdAt}</span></main>  
-          <main><span>الرصيد</span><span>{Number(singleData.money).toLocaleString() || 0}</span></main>   
-          <main><span>الحال</span><span>{singleData.isWorke ? "شغال" : "متوقف"}</span></main>
+          <main><span>الرصيد</span><span>{Number(singleData.money).toLocaleString() || 0}</span></main>
+          <main><span>الأدارة العامة</span><div onClick={()=>updateadmin(singleData)} className={`true-false ${singleData.admin ? "true": "false"}`}></div></main>
+          <main><span>الحال الحساب</span><div onClick={()=>updateisWorke(singleData)} className={`true-false ${singleData.isWorke ? "true": "false"}`}></div></main>
+          <main><span>اداري</span><div onClick={()=>updateisSeller(singleData)} className={`true-false ${singleData.isSeller ? "true": "false"}`}></div></main>
+          <main><span>عميل في موقع</span><div onClick={()=>updateTestAdmin(singleData)} className={`true-false ${singleData.testAdmin ? "true": "false"}`}></div></main>
           <div className='form-user-money'>
-            <input type='number' value={num} onChange={e=>setNum(e.target.value)} />
-            <button onClick={increment}>أضافة</button>{console.log(singleData)}
+            <input type='number' placeholder='رصيد' value={num} onChange={e=>setNum(e.target.value)} />
+            <button onClick={increment}>أضافة</button>
             <button onClick={decrement}>سحب</button>
           </div>
           <div>{singleData.message.message}</div>
           <div className='form-user-money'>
-            <input type='text' value={message} onChange={e=>setMessage(e.target.value)} />
+            <input placeholder='رسالة لي المستخدم' type='text' value={message} onChange={e=>setMessage(e.target.value)} />
             <button onClick={sund}>ارسال</button>
           </div>
           <div className='form-user-money'>
-            <input type='text' value={password} onChange={e=>setPassword(e.target.value)} />
+            <input type='text' placeholder='كلمة المرور' value={password} onChange={e=>setPassword(e.target.value)} />
             <button onClick={()=>newPassaord(singleData._idd)}>new password</button>
           </div>
-          <button onClick={()=>updateTestAdmin(singleData._id)} >{singleData.testAdmin ? "ألغاء" : "عميل في موقع"}</button>
      </div>
   </div>
   )
