@@ -30,10 +30,25 @@ const UserMony = () => {
         {dataDealings && dataDealings.slice().reverse().map((e,i)=>(
             <div className='box' key={i} >
                 <div>{e?.createdAt}</div>  
-                <div>{e?.money}</div>  
-                <div>{e?.caption}</div> 
-                {/* <div>{e.ap}</div>   */}
-                {/* <div>{Number(e.totalPriceOrder).toLocaleString()}س.ج : {e.carts.length}عنصر</div> */}
+                <div className="info">
+                  <div>ج.س{Number(e ? e?.money: 0).toLocaleString()}</div>  
+                  <div>رقم الطلب : {e?.id}</div> 
+                  <div>تعليق : {e?.caption}</div> 
+                </div>
+                {e && +dataUser.userid === +e?.userGet?.userid ? (
+                  <div className="info">
+                    <div>تم ارسال المبلق</div>
+                    <div>الى</div>
+                    <div>{e?.userPay?.username }</div>
+                  </div>  
+                ):(
+                  <div className="info">
+                    <div>تم تحويل لي حسابك</div>  
+                    <div>من</div>
+                    <div>{e?.userGet?.username }</div>
+                  </div>  
+                )} 
+                
             </div>
         )) }
     </div>

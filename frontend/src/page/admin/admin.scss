@@ -26,17 +26,25 @@
                 }
             }
         }
-        .dealings {
+      .dealings {
             .box {
                 border: 1px solid var(--main-color);
-                padding: 10px;
+                padding: 5px;
                 position: relative;
                 margin: 5px;
+                font-size: 10px;
+
                 img {
                     width: 30px;
                 }
+                .info {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: space-between;
+
+                }
                 div {
-                    padding: 5px;
+                    padding: 2px;
                 }
                 .linked {
                     position: absolute;
